@@ -1,7 +1,7 @@
 import Header from "../components/home/Header";
 import Biwulianbing from "../components/home/Biwulianbing";
 import Team from "../components/home/Team";
-// import Citys from "../components/home/Citys";
+import Citys from "../components/home/Citys";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Header />
       <Biwulianbing />
       <Team />
-      {/* <Citys /> */}
+      <Citys />
     </div>
   );
 }

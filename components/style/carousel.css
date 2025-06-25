@@ -1,0 +1,37 @@
+/* carousel.css */
+.carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel-track {
+  display: flex;
+  transition: transform 0.3s ease;
+}
+.carousel-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 400px; /* 按需调整 */
+  background: #f0f0f0;
+  font-size: 1.5rem;
+}
+.pagination {
+  position: absolute;
+  bottom: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+.dot.active {
+  background: #12a1a0;
+}
