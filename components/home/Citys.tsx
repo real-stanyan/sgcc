@@ -1,113 +1,51 @@
 import { useState, useEffect } from "react";
 import "../style/carousel.css";
 
+type CityProps = {
+  name: string;
+  image?: string;
+};
+
+const City = ({ name, image }: CityProps) => {
+  return (
+    <div className="flex flex-col-reverse md:flex-row w-full h-[400px] cursor-pointer">
+      <div
+        className="
+          w-full md:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
+          h-full
+        "
+      >
+        {name}
+      </div>
+      <div className="w-full md:w-[70%]">
+        <img
+          src={image ?? "/images/city_bg.webp"}
+          alt={name}
+          className="w-full h-full object-cover"
+        />
+      </div>
+    </div>
+  );
+};
+
 const Citys = () => {
   const slides: React.ReactNode[] = [
     // 南京公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full
-        `}
-      >
-        南京公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"南京公司"} />,
     // 苏州公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        苏州公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"苏州公司"} />,
     // 扬州公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        扬州公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"扬州公司"} />,
     // 无锡公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        无锡公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"无锡公司"} />,
     // 徐州公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        徐州公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"徐州公司"} />,
     // 常州公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        常州公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"常州公司"} />,
     // 镇江公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        镇江公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"镇江公司"} />,
     // 江都公司
-    <div className="flex flex-col-reverse lg:flex-raw w-full h-[400px] cursor-pointer">
-      <div
-        className={`
-        w-full lg:w-[30%] bg-[#12a1a0] text-white flex justify-center items-center
-        h-full`}
-      >
-        江都公司
-      </div>
-      <div className="w-full lg:w-[70%]">
-        <img src="/images/city_bg.webp" alt="" />
-      </div>
-    </div>,
+    <City name={"江都公司"} />,
   ];
   const [current, setCurrent] = useState(0);
   const n = slides.length;
