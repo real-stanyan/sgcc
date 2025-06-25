@@ -4,7 +4,7 @@ const Header = () => {
   const [link, setLink] = useState("首页");
 
   return (
-    <div className="relative overflow-visible">
+    <div className="relative overflow-visible pb-[100px]">
       {/* Banner */}
       <div
         className={`
@@ -120,7 +120,7 @@ const Header = () => {
             </div>
           </div>
           {/* right */}
-          <div className="flex-1 bg-gray-600"></div>
+          <div className="hidden lg:flex flex-1 bg-gray-600"></div>
         </div>
       </div>
     </div>
