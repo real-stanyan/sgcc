@@ -1,0 +1,48 @@
+/* carousel.css */
+.carousel-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+.carousel {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 20px;
+}
+.slide {
+  transition: flex-basis 0.4s;
+  overflow: hidden;
+}
+.main {
+  flex: 0 0 70%;
+}
+.side {
+  flex: 0 0 15%;
+  opacity: 0.6;
+}
+button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+.slide-content img {
+  display: block;
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+}
+.slide {
+  flex-shrink: 0;
+}
+.side {
+  flex: 0 0 15%;
+  opacity: 0.6;
+}
+.main {
+  flex: 0 0 70%;
+}
