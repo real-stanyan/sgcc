@@ -1,8 +1,12 @@
+import Header from "../components/home/Header";
+import Citys from "../components/home/Citys";
+
 function App() {
   return (
-    <>
-      <h1 className="text-amber-300 underline">adasf</h1>
-    </>
+    <div>
+      <Header />
+      <Citys />
+    </div>
   );
 }
 
