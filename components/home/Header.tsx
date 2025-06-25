@@ -44,6 +44,7 @@ const Header = () => {
             } 
             px-8 py-4 text-md flex-1 text-center whitespace-nowrap cursor-pointer
             `}
+            onClick={() => setLink("首页")}
           >
             首页
           </div>
@@ -56,6 +57,7 @@ const Header = () => {
             } 
             px-8 py-4 text-md flex-1 text-center whitespace-nowrap cursor-pointer
             `}
+            onClick={() => setLink("练兵比武")}
           >
             “赛马制”练兵比武
           </div>
@@ -68,6 +70,7 @@ const Header = () => {
             } 
             px-8 py-4 text-md flex-1 text-center whitespace-nowrap cursor-pointer
             `}
+            onClick={() => setLink("柔性团队")}
           >
             柔性团队
           </div>
@@ -80,6 +83,7 @@ const Header = () => {
             } 
             px-8 py-4 text-md flex-1 text-center whitespace-nowrap cursor-pointer
             `}
+            onClick={() => setLink("一线核心标杆班组")}
           >
             一线核心标杆班组
           </div>
@@ -92,6 +96,7 @@ const Header = () => {
             } 
             px-8 py-4 text-md flex-1 text-center whitespace-nowrap cursor-pointer
             `}
+            onClick={() => setLink("光荣榜")}
           >
             光荣榜
           </div>
