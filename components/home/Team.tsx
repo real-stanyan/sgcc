@@ -23,7 +23,7 @@ const Team = () => {
       >
         <div
           className={`
-          grid grid-cols-3 gap-2 w-[80%] mx-auto
+          grid grid-cols-2 lg:grid-cols-3 gap-2 w-[80%] mx-auto
           `}
         >
           <div
