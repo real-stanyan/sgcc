@@ -138,6 +138,9 @@ const Team = () => (
         </TableBody>
       </Table>
     </div>
+    <div className="w-full h-auto mt-[60px]">
+      <img src="/images/home_ranking_footer.webp" alt="" />
+    </div>
   </div>
 );
 
