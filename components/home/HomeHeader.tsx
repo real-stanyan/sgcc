@@ -89,6 +89,17 @@ const HomeHeader = () => {
               `}
                 onClick={() => {
                   setLink(item);
+                  navigate(
+                    item === "首页"
+                      ? "/"
+                      : item === "练兵比武"
+                      ? "/biwulianbing"
+                      : item === "柔性团队"
+                      ? "/team"
+                      : item === "一线核心标杆班组"
+                      ? "/group"
+                      : ""
+                  );
                 }}
               >
                 {item}
