@@ -1,10 +1,14 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Header from "../common/Header";
 
-const Header = () => {
+const HomeHeader = () => {
   const [link, setLink] = useState("首页");
+  const navigate = useNavigate();
 
   return (
     <div className="relative overflow-visible pb-[100px]">
+      <Header />
       {/* Banner */}
       <div
         className={`
@@ -21,17 +25,6 @@ const Header = () => {
         >
           <h1>国网扬州供电公司</h1>
           <h1>人才培养看板</h1>
-        </div>
-        {/* logo */}
-        <div
-          className={`
-        bg-[#12a1a0] w-[140px] md:w-[200px] h-[50px] md:h-[60px] rounded-br-2xl 
-        absolute top-0 left-0 flex items-center
-        `}
-        >
-          <div className="h-[50%] pl-[15%]">
-            <img src="/images/logo.webp" alt="logo" className="w-full h-full" />
-          </div>
         </div>
       </div>
       {/* White box with links & news */}
@@ -52,7 +45,12 @@ const Header = () => {
                     ? "bg-[#12a1a0] text-white"
                     : "bg-[#cacaca] text-black"
                 }`}
-                onClick={() => setLink(item)}
+                onClick={() => {
+                  setLink(item);
+                  navigate(
+                    item === "首页" ? "/" : item === "柔性团队" ? "/team" : ""
+                  );
+                }}
               >
                 {item}
               </div>
@@ -67,11 +65,17 @@ const Header = () => {
               <div
                 key={item}
                 className={`
-        w-full text-center whitespace-nowrap cursor-pointer py-2 rounded-md
-        ${link === item ? "bg-[#12a1a0] text-white" : "bg-[#cacaca] text-black"}
-        ${item === "一线核心标杆班组" ? "col-span-2 order-last" : ""}
-      `}
-                onClick={() => setLink(item)}
+                w-full text-center whitespace-nowrap cursor-pointer py-2 rounded-md
+                ${
+                  link === item
+                    ? "bg-[#12a1a0] text-white"
+                    : "bg-[#cacaca] text-black"
+                }
+                ${item === "一线核心标杆班组" ? "col-span-2 order-last" : ""}
+              `}
+                onClick={() => {
+                  setLink(item);
+                }}
               >
                 {item}
               </div>
@@ -145,4 +149,4 @@ const NewsLine = ({
   </div>
 );
 
-export default Header;
+export default HomeHeader;

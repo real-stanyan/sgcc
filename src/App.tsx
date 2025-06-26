@@ -1,18 +1,15 @@
-import Header from "../components/home/Header";
-import Biwulianbing from "../components/home/Biwulianbing";
-import Team from "../components/home/Team";
-import Citys from "../components/home/Citys";
-import Ranking from "../components/home/Ranking";
+import Home from "../pages/Home";
+import Team from "../pages/Team";
+import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div>
-      <Header />
-      <Biwulianbing />
-      <Team />
-      <Citys />
-      <Ranking />
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/team" element={<Team />}></Route>
+      </Routes>
+    </>
   );
 }
 
