@@ -1,0 +1,156 @@
+[
+  {
+    "index": 1,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "500千伏变电运检中心",
+    "group_name": "变电二次检修班",
+    "group_type": "变电二次检修",
+    "comment": ""
+  },
+  {
+    "index": 2,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "变电检修中心",
+    "group_name": "变电修试三班",
+    "group_type": "变电修试",
+    "comment": ""
+  },
+  {
+    "index": 3,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "输电运检中心",
+    "group_name": "输电运检二班",
+    "group_type": "输电运检",
+    "comment": ""
+  },
+  {
+    "index": 4,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "输电运检中心",
+    "group_name": "电缆运检班",
+    "group_type": "电缆运检",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 5,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "城西供电服务中心",
+    "group_name": "低压综合服务二班",
+    "group_type": "配电运检/配电二次运检/低压综合服务",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 6,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "城东供电服务中心",
+    "group_name": "低压综合服务二班",
+    "group_type": "配电运检/配电二次运检/低压综合服务",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 7,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "信息通信分公司（数据中心）",
+    "group_name": "信通运检一班",
+    "group_type": "信通运检（通信）",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 8,
+    "company": "扬州公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "市公司",
+    "department": "信息通信分公司（数据中心）",
+    "group_name": "信通运检二班",
+    "group_type": "信通运检（数字化）",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 9,
+    "company": "江都公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "输变电运检中心",
+    "group_name": "变电检修班",
+    "group_type": "变电修试",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 10,
+    "company": "江都公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "配电运检中心（项目管理分中心）",
+    "group_name": "配电运检一班",
+    "group_type": "配电运检",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 11,
+    "company": "仪征公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "配电运检中心（项目管理分中心）",
+    "group_name": "配电运检班",
+    "group_type": "配电运检",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 12,
+    "company": "高邮公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "输变电运检中心",
+    "group_name": "变电二次检修班",
+    "group_type": "变电二次检修",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 13,
+    "company": "高邮公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "配电运检中心（项目管理分中心）",
+    "group_name": "配电运检二班",
+    "group_type": "配电运检",
+    "comment": "第二期新增"
+  },
+  {
+    "index": 14,
+    "company": "宝应公司",
+    "property": "主业",
+    "type": "班组",
+    "level": "县公司",
+    "department": "配电运检中心（项目管理分中心）",
+    "group_name": "配电运检班",
+    "group_type": "配电运检",
+    "comment": "第二期新增"
+  }
+]

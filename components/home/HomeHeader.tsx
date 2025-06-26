@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../common/Header";
 
 const HomeHeader = () => {
   const [link, setLink] = useState("首页");
@@ -8,12 +7,19 @@ const HomeHeader = () => {
 
   return (
     <div className="relative overflow-visible pb-[100px]">
-      <Header />
+      <div
+        className={`
+            bg-[#12a1a0] w-[180px] lg:w-[250px] h-[80px] flex justify-center items-center
+            rounded-br-[40px] absolute top-0 left-0 z-50 pr-4
+            `}
+      >
+        <img src="/images/logo.webp" alt="logo" className="w-auto h-[50%]" />
+      </div>
       {/* Banner */}
       <div
         className={`
-    w-full min-h-[70vh] bg-[url('/images/home_header_bg.webp')] 
-    bg-cover bg-no-repeat bg-top z-0
+        w-full min-h-[70vh] bg-[url('/images/home_header_bg.webp')] 
+        bg-cover bg-no-repeat bg-top z-0
     `}
       >
         {/* content */}
@@ -48,7 +54,15 @@ const HomeHeader = () => {
                 onClick={() => {
                   setLink(item);
                   navigate(
-                    item === "首页" ? "/" : item === "柔性团队" ? "/team" : ""
+                    item === "首页"
+                      ? "/"
+                      : item === "练兵比武"
+                      ? "/biwulianbing"
+                      : item === "柔性团队"
+                      ? "/team"
+                      : item === "一线核心标杆班组"
+                      ? "/group"
+                      : ""
                   );
                 }}
               >

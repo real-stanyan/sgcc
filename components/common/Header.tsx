@@ -18,7 +18,9 @@ const Header = () => {
       ? "“赛马制”练兵比武"
       : path === "team"
       ? "柔性团队"
-      : "光荣榜"
+      : path === "group"
+      ? "一线核心标杆班组"
+      : ""
   );
 
   console.log(path);
@@ -56,6 +58,8 @@ const Header = () => {
                 ? "/biwulianbing"
                 : text === "柔性团队"
                 ? "/team"
+                : text === "一线核心标杆班组"
+                ? "/group"
                 : "/"
             }
             onClick={() => setLink(text)}
@@ -121,6 +125,8 @@ const Header = () => {
                     ? "/biwulianbing"
                     : text === "柔性团队"
                     ? "/team"
+                    : text === "一线核心标杆班组"
+                    ? "/group"
                     : "/"
                 }
                 onClick={() => setLink(text)}
