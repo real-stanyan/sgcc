@@ -50,38 +50,42 @@ const Team = () => (
       </div>
       {/* Table */}
       <Table className="hidden lg:block table-fixed w-full">
-        <TableHeader>
+        <TableHeader
+          className={`
+            border-t-4 border-[#12a1a0] bg-black/10
+          `}
+        >
           <TableRow>
-            <TableHead className="w-[5%] whitespace-nowrap text-center">
+            <TableHead className="w-[5%] whitespace-nowrap text-center font-bold">
               序号
             </TableHead>
-            <TableHead className="w-[5%] whitespace-nowrap text-center">
+            <TableHead className="w-[5%] whitespace-nowrap text-center font-bold">
               挂钩领导
             </TableHead>
-            <TableHead className="w-[5%] whitespace-nowrap text-center">
+            <TableHead className="w-[5%] whitespace-nowrap text-center font-bold">
               组长
             </TableHead>
-            <TableHead className="w-[8%] whitespace-nowrap text-center">
+            <TableHead className="w-[8%] whitespace-nowrap text-center font-bold">
               专业领域
             </TableHead>
-            <TableHead className="w-[10%] whitespace-nowrap text-center">
+            <TableHead className="w-[10%] whitespace-nowrap text-center font-bold">
               副组长
             </TableHead>
-            <TableHead className="w-[15%] whitespace-nowrap text-center">
+            <TableHead className="w-[15%] whitespace-nowrap text-center font-bold">
               研究方向
             </TableHead>
-            <TableHead className="w-[20%] whitespace-nowrap text-center">
+            <TableHead className="w-[20%] whitespace-nowrap text-center font-bold">
               在研项目 (课题)
             </TableHead>
-            <TableHead className="w-[10%] whitespace-nowrap text-center">
+            <TableHead className="w-[10%] whitespace-nowrap text-center font-bold">
               团队骨干
             </TableHead>
-            <TableHead className="w-[10%] whitespace-nowrap text-center">
+            <TableHead className="w-[10%] whitespace-nowrap text-center font-bold">
               联系人及
               <br />
               联系方式
             </TableHead>
-            <TableHead className="w-[22%] whitespace-nowrap text-center">
+            <TableHead className="w-[22%] whitespace-nowrap text-center font-bold">
               团队成员
             </TableHead>
           </TableRow>
