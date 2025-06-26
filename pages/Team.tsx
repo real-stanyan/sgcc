@@ -18,14 +18,14 @@ import Header from "../components/common/Header";
 import TeamData from "../data/team.json";
 
 const Team = () => (
-  <div className="pt-[80px]">
+  <div className="pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
     <Header />
     <img
       src="/images/team_banner.webp"
       alt=""
       className="w-full h-full object-cover"
     />
-    <div className="w-full px-12 py-14 flex flex-col items-start gap-[80px]">
+    <div className="w-full px-12 py-14 flex flex-col items-start gap-[80px] pb-[50vh]">
       {/* Breadcrumb */}
       <Breadcrumb>
         <BreadcrumbList>
@@ -137,9 +137,6 @@ const Team = () => (
           ))}
         </TableBody>
       </Table>
-    </div>
-    <div className="w-full h-auto mt-[60px]">
-      <img src="/images/home_ranking_footer.webp" alt="" />
     </div>
   </div>
 );

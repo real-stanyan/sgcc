@@ -12,7 +12,13 @@ import {
 const Header = () => {
   const path = useLocation().pathname.split("/")[1];
   const [link, setLink] = useState(
-    path === "" ? "首页" : path === "team" ? "柔性团队" : "光荣榜"
+    path === ""
+      ? "首页"
+      : path === "biwulianbing"
+      ? "“赛马制”练兵比武"
+      : path === "team"
+      ? "柔性团队"
+      : "光荣榜"
   );
 
   console.log(path);
@@ -43,7 +49,15 @@ const Header = () => {
         ].map((text, i) => (
           <Link
             key={i}
-            to={i === 2 ? "/team" : "/"}
+            to={
+              text === "首页"
+                ? "/"
+                : text === "“赛马制”练兵比武"
+                ? "/biwulianbing"
+                : text === "柔性团队"
+                ? "/team"
+                : "/"
+            }
             onClick={() => setLink(text)}
           >
             <h1
@@ -97,21 +111,29 @@ const Header = () => {
               "柔性团队",
               "一线核心标杆班组",
               "光荣榜",
-            ].map((t, i) => (
+            ].map((text, i) => (
               <Link
                 key={i}
-                to={i === 2 ? "/team" : "/"}
-                onClick={() => setLink(t)}
+                to={
+                  text === "首页"
+                    ? "/"
+                    : text === "“赛马制”练兵比武"
+                    ? "/biwulianbing"
+                    : text === "柔性团队"
+                    ? "/team"
+                    : "/"
+                }
+                onClick={() => setLink(text)}
                 className={`
                     ${
-                      link === t
+                      link === text
                         ? "bg-[#12a1a0] text-white"
                         : "bg-white text-black"
                     } text-center py-4 rounded-md
                      font-semibold text-lg
                     `}
               >
-                <h1>{t}</h1>
+                <h1>{text}</h1>
               </Link>
             ))}
           </SheetContent>
