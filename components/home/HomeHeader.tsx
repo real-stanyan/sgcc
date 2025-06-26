@@ -18,7 +18,7 @@ const HomeHeader = () => {
       {/* Banner */}
       <div
         className={`
-        w-full min-h-[70vh] bg-[url('/images/home_header_bg.webp')] 
+        w-full min-h-[50vh] bg-[url('/images/home_header_bg.webp')] 
         bg-cover bg-no-repeat bg-top z-0
     `}
       >
@@ -29,14 +29,13 @@ const HomeHeader = () => {
           lg:leading-[80px] font-black
           `}
         >
-          <h1>国网扬州供电公司</h1>
-          <h1>人才培养看板</h1>
+          <h1>国网扬州供电公司人才培养看板</h1>
         </div>
       </div>
       {/* White box with links & news */}
       <div
         className={`
-      w-[90%] md:w-[70%] bg-white -mt-[50px] mx-auto relative overflow-visible z-10
+      w-[90%] md:w-[70%] bg-white mt-[20px] mx-auto relative overflow-visible z-10
       rounded
         `}
       >
