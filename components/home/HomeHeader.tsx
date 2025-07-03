@@ -1,7 +1,9 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { House, UsersRound, Handshake, Trophy } from "lucide-react";
 
 const HomeHeader = () => {
+  const [visitsCount, setVisitsCount] = useState();
   const [link, setLink] = useState("首页");
   const navigate = useNavigate();
 
@@ -18,19 +20,95 @@ const HomeHeader = () => {
       {/* Banner */}
       <div
         className={`
-        w-full min-h-[50vh] bg-[url('/images/home_header_bg.webp')] 
-        bg-cover bg-no-repeat bg-top z-0
+        w-full min-h-[40vh] bg-[url('/images/home_header_bg.webp')] 
+        bg-cover bg-no-repeat bg-top z-0 relative
     `}
       >
         {/* content */}
         <div
           className={`
-          absolute left-[12%] top-[15%] text-white text-4xl leading-[50px] lg:text-6xl 
+          absolute left-[12%] top-[35%] text-white text-4xl leading-[50px] lg:text-5xl 
           lg:leading-[80px] font-black
           `}
         >
           <h1>国网扬州供电公司人才培养看板</h1>
         </div>
+        {/* visits */}
+        {/* <div
+          className={`
+          absolute right-0 bottom-0 text-white text-4xl p-6
+          `}
+        >
+          <h1>访问量</h1>
+        </div> */}
+      </div>
+      {/* links_PC */}
+      <div
+        className={`
+            hidden lg:flex justify-around items-center px-[10%] h-[100px]
+            bg-[url('/images/home_header_links_bg.webp')] object-bottom bg-no-repeat object-cover
+            `}
+      >
+        {[
+          { name: "首页", icon: House, url: "/" },
+          { name: "练兵比武", icon: Trophy, url: "/biwulianbing" },
+          { name: "柔性团队", icon: Handshake, url: "/team" },
+          { name: "一线核心标杆班组", icon: UsersRound, url: "/group" },
+          // { name: "光荣榜", icon: House, url: "/ranking" },
+        ].map((item, index) => (
+          <Link
+            to={item.url}
+            key={index}
+            className={`
+              flex-1 flex justify-center items-center gap-2 h-full font-semibold text-md
+              ${
+                link === item.name
+                  ? "bg-[#12a1a0] text-white"
+                  : "bg-transparent text-black hover:bg-[#12a1a0]/50 hover:text-white"
+              }
+              duration-200 transition-colors ease-in-out
+              `}
+            onClick={() => setLink(item.name)}
+          >
+            <item.icon />
+            <h1>{item.name}</h1>
+          </Link>
+        ))}
+      </div>
+
+      {/* links_PE  */}
+      <div
+        className={`
+        lg:hidden grid grid-cols-2 gap-2 p-4 bg-[url('/images/home_header_links_bg.webp')]
+        object-bottom object-cover bg-no-repeat
+        `}
+      >
+        {[
+          { name: "首页", icon: House, url: "/" },
+          { name: "练兵比武", icon: Trophy, url: "/biwulianbing" },
+          { name: "柔性团队", icon: Handshake, url: "/team" },
+          { name: "一线核心标杆班组", icon: UsersRound, url: "/group" },
+          // { name: "光荣榜", icon: House, url: "/ranking" },
+        ].map((item, index) => (
+          <Link
+            to={item.url}
+            key={index}
+            className={`
+                flex justify-center items-center gap-2 border border-black/50
+                h-[50px] rounded
+                ${
+                  link === item.name
+                    ? "bg-[#12a1a0] text-white"
+                    : "bg-transparent text-black hover:bg-[#12a1a0]/50 hover:text-white"
+                }
+              duration-200 transition-colors ease-in-out
+              `}
+            onClick={() => setLink(item.name)}
+          >
+            <item.icon />
+            <h1 className="whitespace-nowrap">{item.name}</h1>
+          </Link>
+        ))}
       </div>
       {/* White box with links & news */}
       <div
@@ -39,116 +117,84 @@ const HomeHeader = () => {
       rounded
         `}
       >
-        {/* links_PC */}
-        <div className="hidden lg:flex justify-around items-center gap-2 px-5 py-2">
-          {["首页", "练兵比武", "柔性团队", "一线核心标杆班组", "光荣榜"].map(
-            (item) => (
-              <div
-                key={item}
-                className={`flex-1 text-center whitespace-nowrap cursor-pointer px-8 py-4 ${
-                  link === item
-                    ? "bg-[#12a1a0] text-white"
-                    : "bg-[#cacaca] text-black"
-                }`}
-                onClick={() => {
-                  setLink(item);
-                  navigate(
-                    item === "首页"
-                      ? "/"
-                      : item === "练兵比武"
-                      ? "/biwulianbing"
-                      : item === "柔性团队"
-                      ? "/team"
-                      : item === "一线核心标杆班组"
-                      ? "/group"
-                      : ""
-                  );
-                }}
-              >
-                {item}
-              </div>
-            )
-          )}
-        </div>
-
-        {/* links_PE  */}
-        <div className="lg:hidden grid grid-cols-2 gap-2 px-2 py-4">
-          {["首页", "练兵比武", "柔性团队", "一线核心标杆班组", "光荣榜"].map(
-            (item) => (
-              <div
-                key={item}
-                className={`
-                w-full text-center whitespace-nowrap cursor-pointer py-2 rounded-md
-                ${
-                  link === item
-                    ? "bg-[#12a1a0] text-white"
-                    : "bg-[#cacaca] text-black"
-                }
-                ${item === "一线核心标杆班组" ? "col-span-2 order-last" : ""}
-              `}
-                onClick={() => {
-                  setLink(item);
-                  navigate(
-                    item === "首页"
-                      ? "/"
-                      : item === "练兵比武"
-                      ? "/biwulianbing"
-                      : item === "柔性团队"
-                      ? "/team"
-                      : item === "一线核心标杆班组"
-                      ? "/group"
-                      : ""
-                  );
-                }}
-              >
-                {item}
-              </div>
-            )
-          )}
-        </div>
-
         {/* left/right & news lines */}
-        <div className="flex flex-col lg:flex-row mt-[30px] px-2">
+        <div className="relative flex flex-col lg:flex-row mt-[30px] px-2">
           {/* left */}
           <div className="flex-1">
-            <div className="flex justify-between items-center w-full lg:w-[90%]">
-              <div className="w-[100px] h-[40px] bg-[#12a1a0] text-white text-xl font-black flex items-center justify-center">
-                要闻
+            {/* 要闻 */}
+            <div className="flex flex-col">
+              <div className="flex justify-between items-center w-full lg:w-[90%]">
+                <div className="w-[100px] h-[40px] bg-[#12a1a0] text-white text-xl font-black flex items-center justify-center">
+                  要闻
+                </div>
+                <div className="flex gap-1">
+                  <button className="w-[35px] h-[35px] border flex items-center justify-center">
+                    <img
+                      src="/images/left.webp"
+                      className="w-[25px] h-[25px]"
+                    />
+                  </button>
+                  <button className="w-[35px] h-[35px] border flex items-center justify-center">
+                    <img
+                      src="/images/left.webp"
+                      className="w-[25px] h-[25px] transform scale-x-[-1]"
+                    />
+                  </button>
+                </div>
               </div>
-              <div className="flex gap-1">
-                <button className="w-[35px] h-[35px] border flex items-center justify-center">
-                  <img src="/images/left.webp" className="w-[25px] h-[25px]" />
-                </button>
-                <button className="w-[35px] h-[35px] border flex items-center justify-center">
-                  <img
-                    src="/images/left.webp"
-                    className="w-[25px] h-[25px] transform scale-x-[-1]"
-                  />
-                </button>
+              <div className="flex flex-col gap-4 mt-4 mb-[20px] w-full lg:w-[90%]">
+                {[1, 2].map((i) => (
+                  <NewsLine key={i} index={i} title="标题示例" date="06-06" />
+                ))}
+                <div className="w-[30%] h-[40px] border text-gray-400 flex items-center justify-center text-xs cursor-pointer">
+                  查看详细...
+                </div>
               </div>
             </div>
-            <div className="flex flex-col gap-4 mt-4 mb-[80px] w-full lg:w-[90%]">
-              {[1, 2, 3, 4].map((i) => (
-                <NewsLine key={i} index={i} title="标题示例" date="06-06" />
-              ))}
-              <div className="w-[30%] h-[40px] border text-gray-400 flex items-center justify-center text-xs cursor-pointer">
-                查看详细...
+            {/* 快讯 */}
+            <div className="flex flex-col">
+              <div className="flex justify-between items-center w-full lg:w-[90%]">
+                <div className="w-[100px] h-[40px] bg-[#12a1a0] text-white text-xl font-black flex items-center justify-center">
+                  快讯
+                </div>
+                <div className="flex gap-1">
+                  <button className="w-[35px] h-[35px] border flex items-center justify-center">
+                    <img
+                      src="/images/left.webp"
+                      className="w-[25px] h-[25px]"
+                    />
+                  </button>
+                  <button className="w-[35px] h-[35px] border flex items-center justify-center">
+                    <img
+                      src="/images/left.webp"
+                      className="w-[25px] h-[25px] transform scale-x-[-1]"
+                    />
+                  </button>
+                </div>
               </div>
-            </div>
-            {/* full-width bottom bar */}
-            <div className="w-full bg-[#12a1a0] text-white h-[120px] flex items-center z-20 relative">
-              <div className="ml-[10%] flex flex-col">
-                <h1 className="text-lg whitespace-nowrap">
-                  全员赛马练兵 锤炼核心技能
-                </h1>
-                <h3 className="uppercase text-[8px] whitespace-nowrap">
-                  FULL STAFF HORSE RACING AND TRAINING TO HONE CORE SKILLS
-                </h3>
+              <div className="flex flex-col gap-4 mt-4 mb-[80px] w-full lg:w-[90%]">
+                {[1, 2].map((i) => (
+                  <NewsLine key={i} index={i} title="标题示例" date="06-06" />
+                ))}
+                <div className="w-[30%] h-[40px] border text-gray-400 flex items-center justify-center text-xs cursor-pointer">
+                  查看详细...
+                </div>
               </div>
             </div>
           </div>
           {/* right */}
-          <div className="hidden lg:flex flex-1 bg-gray-600"></div>
+          <div className="hidden lg:flex flex-1 bg-gray-600 z-20"></div>
+          {/* full-width bottom bar */}
+          <div className="z-10 absolute  left-0 bottom-0 w-[100vw] bg-[#12a1a0] text-white h-[120px] flex items-center">
+            <div className="ml-[5%] flex flex-col">
+              <h1 className="text-lg whitespace-nowrap">
+                全员赛马练兵 锤炼核心技能
+              </h1>
+              <h3 className="uppercase text-[8px] whitespace-nowrap">
+                FULL STAFF HORSE RACING AND TRAINING TO HONE CORE SKILLS
+              </h3>
+            </div>
+          </div>
         </div>
       </div>
     </div>
