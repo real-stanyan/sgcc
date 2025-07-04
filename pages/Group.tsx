@@ -18,7 +18,8 @@ import {
 } from "../src/components/ui/table";
 import GroupData from "../data/group.json";
 import GroupDetailData from "../data/group_detail.json";
-import { X } from "lucide-react";
+import { X, Search } from "lucide-react";
+import { Input } from "../src/components/ui/input";
 
 const Group = () => {
   const [box, setBox] = useState("标杆班组");
@@ -284,163 +285,186 @@ const Group = () => {
           </div>
         </div>
         {/* Table */}
-        {box === "标杆班组" ? (
-          <Table className="hidden lg:block table-fixed w-full">
-            <TableHeader className="border-t-4 border-[#12a1a0] bg-black/10">
-              <TableRow>
-                <TableHead className="w-[5%] text-center font-bold">
-                  序号
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  公司
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  属性
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  类型
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  层级
-                </TableHead>
-                <TableHead className="w-[20%] text-center font-bold">
-                  部门
-                </TableHead>
-                <TableHead className="w-[20%] text-center font-bold">
-                  班组名称
-                </TableHead>
-                <TableHead className="w-[15%] text-center font-bold">
-                  班组类型
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  备注
-                </TableHead>
-                <TableHead className="w-[15%] text-center font-bold">
-                  功能
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {GroupData.map((team) => (
-                <TableRow key={team.index}>
-                  <TableCell className="text-center">{team.index}</TableCell>
-                  <TableCell className="text-center">{team.company}</TableCell>
-                  <TableCell className="text-center">{team.property}</TableCell>
-                  <TableCell className="text-center">{team.type}</TableCell>
-                  <TableCell className="text-center">{team.level}</TableCell>
-                  <TableCell className="break-words">
-                    {team.department}
-                  </TableCell>
-                  <TableCell className="break-words">
-                    {team.group_name}
-                  </TableCell>
-                  <TableCell className="break-words">
-                    {team.group_type}
-                  </TableCell>
-                  <TableCell className="text-center">{team.comment}</TableCell>
-                  <TableCell
-                    className="w-[15%] text-center cursor-pointer"
-                    onClick={() => handleSetWindow(team)}
-                  >
-                    <p className="text-gray-400 underline font-bold text-md">
-                      查看详细
-                    </p>
-                  </TableCell>
+        <div className="w-full">
+          <div className="flex justify-end items-center w-full h-[50px] relative mb-[10px]">
+            <Input
+              className={`
+            w-[30%] border border-gray-400
+            `}
+              placeholder="搜索关键词"
+            />
+            <Search className="absolute right-3 top-[13px] w-[22px] h-[22px] text-gray-400" />
+          </div>
+          {box === "标杆班组" ? (
+            <Table className="hidden lg:block table-fixed w-full">
+              <TableHeader className="border-t-4 border-[#12a1a0] bg-black/10">
+                <TableRow>
+                  <TableHead className="w-[5%] text-center font-bold">
+                    序号
+                  </TableHead>
+                  <TableHead className="w-[10%] text-center font-bold">
+                    公司
+                  </TableHead>
+                  <TableHead className="w-[10%] text-center font-bold">
+                    属性
+                  </TableHead>
+                  <TableHead className="w-[10%] text-center font-bold">
+                    类型
+                  </TableHead>
+                  <TableHead className="w-[10%] text-center font-bold">
+                    层级
+                  </TableHead>
+                  <TableHead className="w-[20%] text-center font-bold">
+                    部门
+                  </TableHead>
+                  <TableHead className="w-[20%] text-center font-bold">
+                    班组名称
+                  </TableHead>
+                  <TableHead className="w-[15%] text-center font-bold">
+                    班组类型
+                  </TableHead>
+                  <TableHead className="w-[10%] text-center font-bold">
+                    备注
+                  </TableHead>
+                  <TableHead className="w-[15%] text-center font-bold">
+                    功能
+                  </TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        ) : box === "标杆班组人员" ? (
-          <Table className="hidden lg:block table-fixed w-full text-xs">
-            <TableHeader className="border-t-4 border-[#12a1a0] bg-black/10">
-              <TableRow>
-                <TableHead className="text-center font-bold px-1">
-                  序号
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  单位
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  部门
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  班组名称
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  班组类型
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  姓名
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  性别
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  出生日期
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  岗位
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  参加工作时间
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  最高学历
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  职称
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  技能
-                </TableHead>
-                <TableHead className="text-center font-bold px-1">
-                  岗位技能水平
-                </TableHead>
-                <TableHead className="w-[15%] text-center font-bold">
-                  功能
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {GroupDetailData.map((p) => (
-                <TableRow key={p.index}>
-                  <TableCell className="text-center px-1">{p.index}</TableCell>
-                  <TableCell className="text-center px-1">{p.unit}</TableCell>
-                  <TableCell className="px-1">{p.department}</TableCell>
-                  <TableCell className="px-1">{p.team_name}</TableCell>
-                  <TableCell className="px-1">{p.team_type}</TableCell>
-                  <TableCell className="text-center px-1">{p.name}</TableCell>
-                  <TableCell className="text-center px-1">{p.gender}</TableCell>
-                  <TableCell className="text-center px-1">
-                    {p.birth_date}
-                  </TableCell>
-                  <TableCell className="text-center px-1">
-                    {p.position}
-                  </TableCell>
-                  <TableCell className="text-center px-1">
-                    {p.start_date}
-                  </TableCell>
-                  <TableCell className="text-center px-1">
-                    {p.education}
-                  </TableCell>
-                  <TableCell className="text-center px-1">{p.title}</TableCell>
-                  <TableCell className="px-1">{p.skill}</TableCell>
-                  <TableCell className="text-center px-1">
-                    {p.skill_level}
-                  </TableCell>
-                  <TableCell
-                    className="w-[15%] text-center cursor-pointer"
-                    onClick={() => handleSetWindow2(p)}
-                  >
-                    <p className="text-gray-400 underline font-bold text-md">
-                      查看详细
-                    </p>
-                  </TableCell>
+              </TableHeader>
+              <TableBody>
+                {GroupData.map((team) => (
+                  <TableRow key={team.index}>
+                    <TableCell className="text-center">{team.index}</TableCell>
+                    <TableCell className="text-center">
+                      {team.company}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {team.property}
+                    </TableCell>
+                    <TableCell className="text-center">{team.type}</TableCell>
+                    <TableCell className="text-center">{team.level}</TableCell>
+                    <TableCell className="break-words">
+                      {team.department}
+                    </TableCell>
+                    <TableCell className="break-words">
+                      {team.group_name}
+                    </TableCell>
+                    <TableCell className="break-words">
+                      {team.group_type}
+                    </TableCell>
+                    <TableCell className="text-center">
+                      {team.comment}
+                    </TableCell>
+                    <TableCell
+                      className="w-[15%] text-center cursor-pointer"
+                      onClick={() => handleSetWindow(team)}
+                    >
+                      <p className="text-gray-400 underline font-bold text-md">
+                        查看详细
+                      </p>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          ) : box === "标杆班组人员" ? (
+            <Table className="hidden lg:block table-fixed w-full text-xs">
+              <TableHeader className="border-t-4 border-[#12a1a0] bg-black/10">
+                <TableRow>
+                  <TableHead className="text-center font-bold px-1">
+                    序号
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    单位
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    部门
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    班组名称
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    班组类型
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    姓名
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    性别
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    出生日期
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    岗位
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    参加工作时间
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    最高学历
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    职称
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    技能
+                  </TableHead>
+                  <TableHead className="text-center font-bold px-1">
+                    岗位技能水平
+                  </TableHead>
+                  <TableHead className="w-[15%] text-center font-bold">
+                    功能
+                  </TableHead>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        ) : null}
+              </TableHeader>
+              <TableBody>
+                {GroupDetailData.map((p) => (
+                  <TableRow key={p.index}>
+                    <TableCell className="text-center px-1">
+                      {p.index}
+                    </TableCell>
+                    <TableCell className="text-center px-1">{p.unit}</TableCell>
+                    <TableCell className="px-1">{p.department}</TableCell>
+                    <TableCell className="px-1">{p.team_name}</TableCell>
+                    <TableCell className="px-1">{p.team_type}</TableCell>
+                    <TableCell className="text-center px-1">{p.name}</TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.gender}
+                    </TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.birth_date}
+                    </TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.position}
+                    </TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.start_date}
+                    </TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.education}
+                    </TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.title}
+                    </TableCell>
+                    <TableCell className="px-1">{p.skill}</TableCell>
+                    <TableCell className="text-center px-1">
+                      {p.skill_level}
+                    </TableCell>
+                    <TableCell
+                      className="w-[15%] text-center cursor-pointer"
+                      onClick={() => handleSetWindow2(p)}
+                    >
+                      <p className="text-gray-400 underline font-bold text-md">
+                        查看详细
+                      </p>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          ) : null}
+        </div>
       </div>
     </div>
   );
