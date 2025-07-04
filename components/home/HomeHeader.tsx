@@ -22,7 +22,7 @@ const HomeHeader = () => {
   const [link, setLink] = useState("首页");
 
   return (
-    <div className="relative overflow-visible pb-[100px]">
+    <div className="relative overflow-visible">
       <div
         className={`
             bg-[#12a1a0] w-[180px] lg:w-[250px] h-[80px] flex justify-center items-center
@@ -60,12 +60,10 @@ const HomeHeader = () => {
       <div className="relative hidden lg:flex items-center px-[10%] h-[100px]">
         {/* 背景层 */}
         <div
-          className="
-      absolute inset-0
-      bg-[url('/images/home_header_links_bg.webp')] bg-cover bg-bottom bg-no-repeat
-      opacity-50
-      z-0
-    "
+          className={`
+            absolute inset-0 opacity-30 z-0 bg-[url('/images/home_header_links_bg.webp')]
+             bg-cover bg-bottom bg-no-repeat
+          `}
         />
         {/* 内容层 */}
         {Links.map((item, index) => (
@@ -83,7 +81,12 @@ const HomeHeader = () => {
       `}
             onClick={() => setLink(item.name)}
           >
-            <img src={item.icon} className="w-[15%] h-auto" />
+            <img
+              src={item.icon}
+              className={`
+              w-[15%] h-auto ${link === item.name ? "invert" : ""}
+              `}
+            />
             <h1>{item.name}</h1>
           </Link>
         ))}
@@ -93,13 +96,10 @@ const HomeHeader = () => {
       <div className="relative lg:hidden p-4">
         {/* 背景层 */}
         <div
-          className="
-      absolute inset-0
-      bg-[url('/images/home_header_links_bg.webp')]
-      bg-cover bg-bottom bg-no-repeat
-      opacity-50
-      z-0
-    "
+          className={`
+            absolute inset-0 bg-[url('/images/home_header_links_bg.webp')]
+            bg-cover bg-bottom bg-no-repeat opacity-30 z-0
+          `}
         />
         {/* 内容层 */}
         <div className="relative z-10 grid grid-cols-2 gap-2">
