@@ -42,44 +42,40 @@ const Header = () => {
             items-center hidden lg:flex
             `}
       >
-        {[
-          "首页",
-          "“赛马制”练兵比武",
-          "柔性团队",
-          "一线核心标杆班组",
-          "光荣榜",
-        ].map((text, i) => (
-          <Link
-            key={i}
-            to={
-              text === "首页"
-                ? "/"
-                : text === "“赛马制”练兵比武"
-                ? "/biwulianbing"
-                : text === "柔性团队"
-                ? "/team"
-                : text === "一线核心标杆班组"
-                ? "/group"
-                : "/"
-            }
-            onClick={() => setLink(text)}
-          >
-            <h1
-              className={`
+        {["首页", "“赛马制”练兵比武", "柔性团队", "一线核心标杆班组"].map(
+          (text, i) => (
+            <Link
+              key={i}
+              to={
+                text === "首页"
+                  ? "/"
+                  : text === "“赛马制”练兵比武"
+                  ? "/biwulianbing"
+                  : text === "柔性团队"
+                  ? "/team"
+                  : text === "一线核心标杆班组"
+                  ? "/group"
+                  : "/"
+              }
+              onClick={() => setLink(text)}
+            >
+              <h1
+                className={`
                 relative inline-block
               ${link === text ? "text-[#12a1a0]" : "text-black"}
                 `}
-            >
-              {text}
-              <span
-                className={`
+              >
+                {text}
+                <span
+                  className={`
               absolute -bottom-1 left-0 w-full h-[3px] bg-[#12a1a0] translate-y-full
               ${link === text ? "block" : "hidden"}
               `}
-              ></span>
-            </h1>
-          </Link>
-        ))}
+                ></span>
+              </h1>
+            </Link>
+          )
+        )}
       </div>
       {/* PE-Links */}
       <div
@@ -109,28 +105,23 @@ const Header = () => {
                 account and remove your data from our servers.
               </SheetDescription> */}
             </SheetHeader>
-            {[
-              "首页",
-              "“赛马制”练兵比武",
-              "柔性团队",
-              "一线核心标杆班组",
-              "光荣榜",
-            ].map((text, i) => (
-              <Link
-                key={i}
-                to={
-                  text === "首页"
-                    ? "/"
-                    : text === "“赛马制”练兵比武"
-                    ? "/biwulianbing"
-                    : text === "柔性团队"
-                    ? "/team"
-                    : text === "一线核心标杆班组"
-                    ? "/group"
-                    : "/"
-                }
-                onClick={() => setLink(text)}
-                className={`
+            {["首页", "“赛马制”练兵比武", "柔性团队", "一线核心标杆班组"].map(
+              (text, i) => (
+                <Link
+                  key={i}
+                  to={
+                    text === "首页"
+                      ? "/"
+                      : text === "“赛马制”练兵比武"
+                      ? "/biwulianbing"
+                      : text === "柔性团队"
+                      ? "/team"
+                      : text === "一线核心标杆班组"
+                      ? "/group"
+                      : "/"
+                  }
+                  onClick={() => setLink(text)}
+                  className={`
                     ${
                       link === text
                         ? "bg-[#12a1a0] text-white"
@@ -138,10 +129,11 @@ const Header = () => {
                     } text-center py-4 rounded-md
                      font-semibold text-lg
                     `}
-              >
-                <h1>{text}</h1>
-              </Link>
-            ))}
+                >
+                  <h1>{text}</h1>
+                </Link>
+              )
+            )}
           </SheetContent>
         </Sheet>
       </div>

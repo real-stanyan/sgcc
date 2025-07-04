@@ -17,12 +17,104 @@ import {
 } from "../src/components/ui/table";
 import Header from "../components/common/Header";
 import TeamData from "../data/team.json";
+import { X } from "lucide-react";
 
 const Team = () => {
   const [box, setBox] = useState("柔性团队");
+  const [window, setWindow] = useState({
+    show: false,
+    id: 0,
+    manager: "",
+    team_leader: "",
+    area: "",
+    team_sub_leader: "",
+    research_titles: [],
+    projects: [],
+    contactName: "",
+    contactNumber: "",
+    team_members: [],
+  });
+
+  const handleSetWindow = (item: any) => {
+    setWindow({
+      show: true,
+      id: item.index,
+      manager: item.manager || "",
+      team_leader: item.team_leader || "",
+      area: item.area || "",
+      team_sub_leader: item.team_sub_leader || "",
+      research_titles: item.research_titles || [],
+      projects: item.projects || [],
+      contactName: item.contact.name || "",
+      contactNumber: item.contact.number || "",
+      team_members: item.team_members || "",
+    });
+  };
+
+  const handleClose = () => setWindow({ ...window, show: false });
+
   return (
     <div className="pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
       <Header />
+      {/* window */}
+      {window.show && (
+        <div
+          className="fixed inset-0 bg-black/30 flex justify-center items-center z-40"
+          onClick={handleClose}
+        >
+          <div
+            className="bg-white w-1/2 p-6 rounded-lg shadow-lg relative z-50"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={handleClose}
+              className="absolute top-2 right-2 text-gray-500 hover:text-black"
+            >
+              <X />
+            </button>
+            <h2 className="text-xl font-bold mb-4">团队信息</h2>
+            <ul className="space-y-2">
+              <li>
+                <strong>挂钩领导：</strong>
+                {window.manager}
+              </li>
+              <li>
+                <strong>团队负责人：</strong>
+                {window.team_leader}
+              </li>
+              <li>
+                <strong>区域：</strong>
+                {window.area}
+              </li>
+              <li>
+                <strong>副组长：</strong>
+                {window.team_sub_leader}
+              </li>
+              <li>
+                <strong>研究课题：</strong>
+                {window.research_titles.join(", ")}
+              </li>
+              <li>
+                <strong>项目：</strong>
+                {window.projects.join(", ")}
+              </li>
+              <li>
+                <strong>联系人姓名：</strong>
+                {window.contactName}
+              </li>
+              <li>
+                <strong>联系电话：</strong>
+                {window.contactNumber}
+              </li>
+              <li>
+                <strong>团队成员：</strong>
+                {window.team_members.join("、")}
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
+
       <img
         src="/images/team_banner.webp"
         alt=""
@@ -127,6 +219,9 @@ const Team = () => {
                 <TableHead className="w-[22%] whitespace-nowrap text-center font-bold">
                   团队成员
                 </TableHead>
+                <TableHead className="w-[15%] text-center font-bold">
+                  功能
+                </TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -142,27 +237,33 @@ const Team = () => {
                     {team.team_leader}
                   </TableCell>
                   <TableCell className="w-[8%] whitespace-normal break-words text-center">
-                    {team.area}
+                    <p className="line-clamp-2">{team.area}</p>
                   </TableCell>
                   <TableCell className="w-[10%] whitespace-normal break-words text-center">
-                    {team.team_sub_leader.join("、")}
+                    <p className="line-clamp-2">
+                      {team.team_sub_leader.join("、")}
+                    </p>
                   </TableCell>
                   <TableCell className="w-[15%] whitespace-normal break-words text-left">
-                    {team.research_titles.map((item, i) => (
-                      <div key={i}>
-                        {i + 1}. {item}
-                      </div>
-                    ))}
+                    <p className="line-clamp-2">
+                      {team.research_titles.map((item, i) => (
+                        <div key={i}>
+                          {i + 1}. {item}
+                        </div>
+                      ))}
+                    </p>
                   </TableCell>
                   <TableCell className="w-[20%] whitespace-normal break-words text-left">
-                    {team.projects.map((item, i) => (
-                      <div key={i}>
-                        {i + 1}. {item}
-                      </div>
-                    ))}
+                    <p className="line-clamp-2">
+                      {team.projects.map((item, i) => (
+                        <div key={i}>
+                          {i + 1}. {item}
+                        </div>
+                      ))}
+                    </p>
                   </TableCell>
                   <TableCell className="w-[10%] whitespace-normal break-words text-center">
-                    {team.team_heros.join("、")}
+                    <p className="line-clamp-2">{team.team_heros.join("、")}</p>
                   </TableCell>
                   <TableCell className="w-[10%] whitespace-normal break-words text-center">
                     {team.contact.name}
@@ -170,7 +271,18 @@ const Team = () => {
                     {team.contact.number}
                   </TableCell>
                   <TableCell className="w-[22%] whitespace-normal break-words text-center">
-                    {team.team_members.join("、")}
+                    <p className="line-clamp-2">
+                      {team.team_members.join("、")}
+                    </p>
+                  </TableCell>
+                  {/* 功能 */}
+                  <TableCell
+                    className="w-[15%] text-center cursor-pointer"
+                    onClick={() => handleSetWindow(team)}
+                  >
+                    <p className="text-gray-400 underline font-bold text-md">
+                      查看详细
+                    </p>
                   </TableCell>
                 </TableRow>
               ))}
