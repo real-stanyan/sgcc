@@ -155,104 +155,96 @@ const Biwulianbing = () => {
             />
             <Search className="absolute right-3 top-[13px] w-[22px] h-[22px] text-gray-400" />
           </div>
-          <Table className="hidden lg:block table-fixed w-full">
-            <TableHeader className="border-t-4 border-[#12a1a0] bg-black/10">
-              <TableRow>
-                <TableHead className="w-[5%] text-center font-bold">
-                  序号
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  比武项目
-                </TableHead>
-                <TableHead className="w-[20%] text-center font-bold">
-                  内容
-                </TableHead>
-                <TableHead className="w-[10%] text-center font-bold">
-                  牵头部门
-                </TableHead>
-                <TableHead className="w-[8%] text-center font-bold">
-                  开展时间
-                </TableHead>
-                <TableHead className="w-[8%] text-center font-bold">
-                  比武时间
-                </TableHead>
-                <TableHead className="w-[8%] text-center font-bold">
-                  挂钩领导
-                </TableHead>
-                <TableHead className="w-[8%] text-center font-bold">
-                  责任人
-                </TableHead>
-                <TableHead className="w-[8%] text-center font-bold">
-                  联系人
-                </TableHead>
-                <TableHead className="w-[15%] text-center font-bold">
-                  进展情况
-                </TableHead>
-                <TableHead className="w-[15%] text-center font-bold">
-                  功能
-                </TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {BiwulianbingData.map((item) => (
-                <TableRow key={item.index}>
-                  {/* 序号 */}
-                  <TableCell className="w-[5%] text-center">
-                    {item.index}
-                  </TableCell>
-                  {/* 比武项目 */}
-                  <TableCell className="w-[10%] text-center">
-                    {item.project}
-                  </TableCell>
-                  {/* 内容 */}
-                  <TableCell className="w-[20%] text-left break-words whitespace-pre-wrap">
-                    <p className="line-clamp-2 cursor-pointer">
-                      {item.content}
-                    </p>
-                  </TableCell>
-                  {/* 牵头部门 */}
-                  <TableCell className="w-[10%] text-center">
-                    {item.header_office}
-                  </TableCell>
-                  {/* 开展时间 */}
-                  <TableCell className="w-[8%] text-center">
-                    {item.duration}
-                  </TableCell>
-                  {/* 比武时间 */}
-                  <TableCell className="w-[8%] text-center">
-                    {item.date}
-                  </TableCell>
-                  {/* 挂钩领导 */}
-                  <TableCell className="w-[8%] text-center">
-                    {item.manager}
-                  </TableCell>
-                  {/* 责任人 */}
-                  <TableCell className="w-[8%] text-center">
-                    {item.responsibler}
-                  </TableCell>
-                  {/* 联系人 */}
-                  <TableCell className="w-[8%] text-center">
-                    {item.contact}
-                  </TableCell>
-                  {/* 进展情况 */}
-                  <TableCell className="w-[15%] text-left break-words whitespace-pre-wrap">
-                    <p className="line-clamp-2 cursor-pointer">
-                      {item.progress}
-                    </p>
-                  </TableCell>
-                  {/* 功能 */}
-                  <TableCell
-                    className="w-[15%] text-center cursor-pointer"
-                    onClick={() => handleSetWindow(item)}
-                  >
-                    <p className="text-gray-400 underline font-bold text-md">
-                      查看详细
-                    </p>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+          <div className="hidden lg:block">
+            {/* 表头 */}
+            <div className="overflow-hidden border-t-4 border-[#12a1a0]">
+              <Table className="table-fixed w-full">
+                <TableHeader className="bg-black/10">
+                  <TableRow>
+                    {[
+                      ["序号", "w-[5%]"],
+                      ["比武项目", "w-[10%]"],
+                      ["内容", "w-[18%]"],
+                      ["牵头部门", "w-[9%]"],
+                      ["开展时间", "w-[8%]"],
+                      ["比武时间", "w-[8%]"],
+                      ["挂钩领导", "w-[8%]"],
+                      ["责任人", "w-[8%]"],
+                      ["联系人", "w-[8%]"],
+                      ["进展情况", "w-[9%]"],
+                      ["功能", "w-[9%]"],
+                    ].map(([title, w]) => (
+                      <TableHead
+                        key={title}
+                        className={`${w} text-center font-bold sticky top-0 bg-black/10 z-10`}
+                      >
+                        {title}
+                      </TableHead>
+                    ))}
+                  </TableRow>
+                </TableHeader>
+              </Table>
+            </div>
+
+            {/* 可滚动表体 */}
+            <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
+              <Table className="table-fixed w-full">
+                <TableBody>
+                  {BiwulianbingData.map((item, index) => (
+                    <TableRow
+                      key={item.index}
+                      className={`
+                    ${(index + 1) % 2 === 0 ? "bg-gray-200" : ""}
+                    `}
+                    >
+                      <TableCell className="w-[5%] text-center">
+                        {item.index}
+                      </TableCell>
+                      <TableCell className="w-[10%] text-center truncate">
+                        {item.project}
+                      </TableCell>
+                      <TableCell className="w-[18%] text-left break-words whitespace-pre-wrap">
+                        <p className="line-clamp-2 cursor-pointer">
+                          {item.content}
+                        </p>
+                      </TableCell>
+                      <TableCell className="w-[9%] text-center">
+                        {item.header_office}
+                      </TableCell>
+                      <TableCell className="w-[8%] text-center">
+                        {item.duration}
+                      </TableCell>
+                      <TableCell className="w-[8%] text-center">
+                        {item.date}
+                      </TableCell>
+                      <TableCell className="w-[8%] text-center">
+                        {item.manager}
+                      </TableCell>
+                      <TableCell className="w-[8%] text-center">
+                        {item.responsibler}
+                      </TableCell>
+                      <TableCell className="w-[8%] text-center">
+                        {item.contact}
+                      </TableCell>
+                      <TableCell className="w-[9%] text-left break-words whitespace-pre-wrap">
+                        <p className="line-clamp-2 cursor-pointer">
+                          {item.progress}
+                        </p>
+                      </TableCell>
+                      <TableCell
+                        className="w-[9%] text-center cursor-pointer"
+                        onClick={() => handleSetWindow(item)}
+                      >
+                        <p className="text-gray-400 underline font-bold text-md">
+                          查看详细
+                        </p>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
+          </div>
         </div>
       </div>
     </div>

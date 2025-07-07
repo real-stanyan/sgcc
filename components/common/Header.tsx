@@ -86,7 +86,7 @@ const Header = () => {
               <img
                 src={link.icon}
                 className={`
-              w-[15%] h-auto ${selectedLink === link.name ? "invert" : ""}
+              w-[9%] h-auto ${selectedLink === link.name ? "invert" : ""}
               `}
               />
               <h1
