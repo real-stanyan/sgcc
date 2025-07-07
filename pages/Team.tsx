@@ -7,18 +7,8 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../src/components/ui/breadcrumb";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../src/components/ui/table";
 import Header from "../components/common/Header";
-import TeamData from "../data/team.json";
-import { Input } from "../src/components/ui/input";
-import { X, Search } from "lucide-react";
+import { X } from "lucide-react";
 import RouXingTuanDui from "../components/tables/TeamTables/RouXingTuanDui";
 import JiFen from "../components/tables/TeamTables/JiFen";
 import GuangRongBang from "../components/tables/TeamTables/GuangRongBang";
@@ -160,7 +150,10 @@ const Team = () => {
             `}
         >
           {Boxes.map((box, index) => (
-            <div className="flex flex-col justify-center items-center gap-1">
+            <div
+              key={index}
+              className="flex flex-col justify-center items-center gap-1"
+            >
               <div
                 className={`
                 border

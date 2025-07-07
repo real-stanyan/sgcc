@@ -3,7 +3,7 @@ import TeamData from "../../../data/team.json";
 import { Input } from "../../../src/components/ui/input";
 import { Search } from "lucide-react";
 
-const RouXingTuanDui = ({ handleSetWindow }) => {
+const RouXingTuanDui = ({ handleSetWindow }: { handleSetWindow: any }) => {
   const [keyword, setKeyword] = useState("");
   const filtered = TeamData.filter((item) => {
     const haystack = [

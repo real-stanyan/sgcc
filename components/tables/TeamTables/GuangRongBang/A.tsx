@@ -62,7 +62,10 @@ const A = () => {
         </div>
         <div className="grid grid-cols-2 mb-[100px]">
           {Rank.map((item, index) => (
-            <div className="flex justify-center items-center gap-8 ">
+            <div
+              key={index}
+              className="flex justify-center items-center gap-8 "
+            >
               <img src="/images/rongyu.webp" alt="rongyu" />
               <div
                 className={`
@@ -89,7 +92,10 @@ const A = () => {
         </div>
         <div className="grid grid-cols-2">
           {BiWu.map((item, index) => (
-            <div className="flex justify-center items-center gap-8 ">
+            <div
+              key={index}
+              className="flex justify-center items-center gap-8 "
+            >
               <img src="/images/rongyu.webp" alt="rongyu" />
               <div
                 className={`
