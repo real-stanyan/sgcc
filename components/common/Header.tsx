@@ -9,9 +9,24 @@ import {
   SheetTrigger,
 } from "../../src/components/ui/sheet";
 
+const Links = [
+  { name: "首页", icon: "/icons/home_icon.webp", url: "/" },
+  {
+    name: "“赛马制”练兵比武",
+    icon: "/icons/biwulianbing_icon.webp",
+    url: "/biwulianbing",
+  },
+  { name: "柔性团队", icon: "/icons/team_icon.webp", url: "/team" },
+  {
+    name: "一线核心标杆班组",
+    icon: "/icons/group_icon.webp",
+    url: "/group",
+  },
+];
+
 const Header = () => {
   const path = useLocation().pathname.split("/")[1];
-  const [link, setLink] = useState(
+  const [selectedLink, setSelectedLink] = useState(
     path === ""
       ? "首页"
       : path === "biwulianbing"
@@ -26,7 +41,11 @@ const Header = () => {
   console.log(path);
 
   return (
-    <div className="fixed top-0 left-0 w-full h-[80px] z-50">
+    <div
+      className={`
+      fixed top-0 left-0 w-full h-[80px] z-50 
+      `}
+    >
       <div
         className={`
             bg-[#12a1a0] w-[180px] lg:w-[250px] h-full flex justify-center items-center
@@ -36,47 +55,52 @@ const Header = () => {
         <img src="/images/logo.webp" alt="logo" className="w-auto h-[50%]" />
       </div>
       {/* PC-Links */}
-      <div
-        className={`
-            absolute left-0 w-full h-full z-40 pl-[300px] bg-white justify-around 
-            items-center hidden lg:flex
-            `}
-      >
-        {["首页", "“赛马制”练兵比武", "柔性团队", "一线核心标杆班组"].map(
-          (text, i) => (
+      <div className="relative left-0 w-full h-full z-40 pl-[300px] hidden lg:flex">
+        {/* background layer with opacity */}
+        <div
+          className="
+      absolute inset-0
+      bg-[url('/images/home_header_links_bg.webp')]
+      bg-cover bg-bottom bg-no-repeat
+      opacity-30
+      z-0
+    "
+        />
+        {/* links layer at full opacity */}
+        <div className="relative z-10 flex w-full h-full justify-around items-center">
+          {Links.map((link, i) => (
             <Link
               key={i}
-              to={
-                text === "首页"
-                  ? "/"
-                  : text === "“赛马制”练兵比武"
-                  ? "/biwulianbing"
-                  : text === "柔性团队"
-                  ? "/team"
-                  : text === "一线核心标杆班组"
-                  ? "/group"
-                  : "/"
-              }
-              onClick={() => setLink(text)}
+              to={link.url}
+              onClick={() => setSelectedLink(link.name)}
+              className={`
+                   flex-1 text-center h-full flex justify-center
+                  items-center gap-2 ${
+                    selectedLink === link.name
+                      ? "bg-[#12a1a0] text-white"
+                      : "text-black hover:bg-[#12a1a0]/70"
+                  }
+                      duration-200 transition-colors ease-in-out
+                `}
             >
+              <img
+                src={link.icon}
+                className={`
+              w-[15%] h-auto ${selectedLink === link.name ? "invert" : ""}
+              `}
+              />
               <h1
                 className={`
-                relative inline-block
-              ${link === text ? "text-[#12a1a0]" : "text-black"}
-                `}
+              relative inline-block
+            `}
               >
-                {text}
-                <span
-                  className={`
-              absolute -bottom-1 left-0 w-full h-[3px] bg-[#12a1a0] translate-y-full
-              ${link === text ? "block" : "hidden"}
-              `}
-                ></span>
+                {link.name}
               </h1>
             </Link>
-          )
-        )}
+          ))}
+        </div>
       </div>
+
       {/* PE-Links */}
       <div
         className={`
@@ -105,35 +129,29 @@ const Header = () => {
                 account and remove your data from our servers.
               </SheetDescription> */}
             </SheetHeader>
-            {["首页", "“赛马制”练兵比武", "柔性团队", "一线核心标杆班组"].map(
-              (text, i) => (
-                <Link
-                  key={i}
-                  to={
-                    text === "首页"
-                      ? "/"
-                      : text === "“赛马制”练兵比武"
-                      ? "/biwulianbing"
-                      : text === "柔性团队"
-                      ? "/team"
-                      : text === "一线核心标杆班组"
-                      ? "/group"
-                      : "/"
-                  }
-                  onClick={() => setLink(text)}
+            {Links.map((link, i) => (
+              <Link
+                key={i}
+                to={link.url}
+                onClick={() => setSelectedLink(link.name)}
+                className={`
+                  ${
+                    selectedLink === link.name
+                      ? "bg-[#12a1a0] text-white"
+                      : "bg-white text-black"
+                  } text-center py-4 rounded-md gap-2
+                   font-semibold text-lg flex justify-center items-center
+                  `}
+              >
+                <img
+                  src={link.icon}
                   className={`
-                    ${
-                      link === text
-                        ? "bg-[#12a1a0] text-white"
-                        : "bg-white text-black"
-                    } text-center py-4 rounded-md
-                     font-semibold text-lg
-                    `}
-                >
-                  <h1>{text}</h1>
-                </Link>
-              )
-            )}
+              w-[7%] h-auto ${selectedLink === link.name ? "invert" : ""}
+              `}
+                />
+                <h1>{link.name}</h1>
+              </Link>
+            ))}
           </SheetContent>
         </Sheet>
       </div>
