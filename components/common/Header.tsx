@@ -55,17 +55,12 @@ const Header = () => {
         <img src="/images/logo.webp" alt="logo" className="w-auto h-[50%]" />
       </div>
       {/* PC-Links */}
-      <div className="relative left-0 w-full h-full z-40 pl-[300px] hidden lg:flex">
-        {/* background layer with opacity */}
-        <div
-          className="
-      absolute inset-0
-      bg-[url('/images/home_header_links_bg.webp')]
-      bg-cover bg-bottom bg-no-repeat
-      opacity-30
-      z-0
-    "
-        />
+      <div
+        className={`
+      relative left-0 w-full h-full z-40 pl-[300px] hidden lg:flex
+      bg-white
+      `}
+      >
         {/* links layer at full opacity */}
         <div className="relative z-10 flex w-full h-full justify-around items-center">
           {Links.map((link, i) => (
