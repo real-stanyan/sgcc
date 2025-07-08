@@ -13,12 +13,6 @@ import K from "./GuangRongBang/K";
 import L from "./GuangRongBang/L";
 import M from "./GuangRongBang/M";
 import N from "./GuangRongBang/N";
-import O from "./GuangRongBang/O";
-import P from "./GuangRongBang/P";
-import Q from "./GuangRongBang/Q";
-import R from "./GuangRongBang/R";
-import S from "./GuangRongBang/S";
-import T from "./GuangRongBang/T";
 
 const Projects = [
   { name: "输变电可靠性管理技能练兵比武", component: <A /> },
@@ -35,12 +29,6 @@ const Projects = [
   { name: "设备运检全业务核心班组技能练兵比武", component: <L /> },
   { name: "技术标准技能练兵比武", component: <M /> },
   { name: "电网调度自动化厂站调试检修技能练兵比武", component: <N /> },
-  { name: "电力交易技能练兵比武", component: <O /> },
-  { name: "应急救援技能练兵比武", component: <P /> },
-  { name: "配网不停电作业技能练兵比武", component: <Q /> },
-  { name: "配网施工检修及自动化技能比武", component: <R /> },
-  { name: "技经专业技能练兵比武", component: <S /> },
-  { name: "企业中台规模化应用技能练兵比武", component: <T /> },
 ];
 
 const GuangRongBang = () => {
@@ -77,18 +65,6 @@ const GuangRongBang = () => {
         return <M />;
       case "电网调度自动化厂站调试检修技能练兵比武":
         return <N />;
-      case "电力交易技能练兵比武":
-        return <O />;
-      case "应急救援技能练兵比武":
-        return <P />;
-      case "配网不停电作业技能练兵比武":
-        return <Q />;
-      case "配网施工检修及自动化技能比武":
-        return <R />;
-      case "技经专业技能练兵比武":
-        return <S />;
-      case "企业中台规模化应用技能练兵比武":
-        return <T />;
       default:
         return null;
     }
@@ -104,7 +80,7 @@ const GuangRongBang = () => {
              py-2
             `}
         >
-          <h1>比武练兵项目</h1>
+          <h1>2024年比武练兵项目</h1>
         </div>
         <div className="w-[95%] flex flex-col items-center justify-center gap-1 mx-auto pb-2">
           {Projects.map((project, index) => (

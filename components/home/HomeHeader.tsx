@@ -17,6 +17,28 @@ const Links = [
   },
 ];
 
+const YaoWen = [
+  {
+    content: "公司召开2025年柔性团队建设工作推进会",
+    date: "06-20",
+  },
+  {
+    content: "公司召开2025年“赛马制”练兵比武暨劳动竞赛工作推进会",
+    date: "06-13",
+  },
+];
+
+const KuaiXun = [
+  {
+    content: "人资部、人资服务室：发布自办班流程指南，全力推进夏训班实施",
+    date: "06-24",
+  },
+  {
+    content: "【夏训班】变电运维中心：开展“无脚本”防汛专项演练",
+    date: "06-25",
+  },
+];
+
 const HomeHeader = () => {
   // const [visitsCount, setVisitsCount] = useState();
   const [link, setLink] = useState("首页");
@@ -153,8 +175,13 @@ const HomeHeader = () => {
                 </h1>
               </div>
               <div className="flex flex-col gap-4 mt-4 mb-[20px] w-full lg:w-[90%]">
-                {[1, 2].map((i) => (
-                  <NewsLine key={i} index={i} title="标题示例" date="06-06" />
+                {YaoWen.map((item, index) => (
+                  <NewsLine
+                    key={index}
+                    index={index + 1}
+                    title={item.content}
+                    date={item.date}
+                  />
                 ))}
               </div>
             </div>
@@ -170,8 +197,13 @@ const HomeHeader = () => {
                 </h1>
               </div>
               <div className="flex flex-col gap-4 mt-4 mb-[80px] w-full lg:w-[90%]">
-                {[1, 2].map((i) => (
-                  <NewsLine key={i} index={i} title="标题示例" date="06-06" />
+                {KuaiXun.map((item, index) => (
+                  <NewsLine
+                    key={index}
+                    index={index + 1}
+                    title={item.content}
+                    date={item.date}
+                  />
                 ))}
               </div>
             </div>
@@ -206,10 +238,15 @@ const NewsLine = ({
   date: string;
 }) => (
   <div className="flex items-center gap-2">
-    <div className="w-[20px] h-[20px] bg-[#12a1a0] text-white flex items-center justify-center">
+    <div
+      className={`
+      ${index % 2 ? "bg-[#12a1a0] text-white" : "bg-gray-200 text-black"}
+    w-[20px] h-[20px]  flex items-center justify-center
+    `}
+    >
       {index}
     </div>
-    <div className="flex-1">{title}</div>
+    <div className="flex-1 truncate">{title}</div>
     <div>{date}</div>
   </div>
 );

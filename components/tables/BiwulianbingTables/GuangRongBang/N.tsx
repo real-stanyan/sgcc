@@ -27,9 +27,12 @@ const N = () => (
       </BreadcrumbList>
     </Breadcrumb>
     <div className="pt-10 w-[60%] mx-auto">
-      <div className="grid grid-cols-2 gap-8 mb-[100px]">
+      <div className="grid grid-cols-1 gap-8 mb-[100px]">
         {Rank.map((item, i) => (
-          <div key={i} className="flex items-center justify-center gap-8">
+          <div
+            key={i}
+            className="flex flex-col flex-col-reverse items-center justify-center gap-8"
+          >
             <img src="/images/rongyu.webp" alt="rongyu" />
             <div className="bg-[#e21120] w-[200px] h-[100px] text-white flex flex-col items-center justify-center rounded">
               <h3 className="text-sm font-medium tracking-widest">
