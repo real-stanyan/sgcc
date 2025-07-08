@@ -11,12 +11,11 @@ import Header from "../components/common/Header";
 import { X } from "lucide-react";
 import RouXingTuanDui from "../components/tables/TeamTables/RouXingTuanDui";
 import JiFen from "../components/tables/TeamTables/JiFen";
-import GuangRongBang from "../components/tables/TeamTables/GuangRongBang";
+import GuangRongBang from "../components/tables/BiwulianbingTables/GuangRongBang";
 
 const Boxes = [
   { name: "柔性团队", icon: "/icons/tuandui.webp" },
   { name: "量化积分评价", icon: "/icons/jifen.webp" },
-  { name: "光荣榜", icon: "/icons/guangrongbang.webp" },
 ];
 
 const Team = () => {
@@ -146,7 +145,7 @@ const Team = () => {
         {/* box */}
         <div
           className={`
-              w-full flex justify-center items-center gap-4
+              w-full hidden lg:flex justify-center items-center gap-4
             `}
         >
           {Boxes.map((box, index) => (
@@ -192,7 +191,7 @@ const Team = () => {
           ))}
         </div>
 
-        <div className="w-full">
+        <div className="w-full hidden lg:block">
           {currentBox === "柔性团队" ? (
             <RouXingTuanDui handleSetWindow={handleSetWindow} />
           ) : currentBox === "量化积分评价" ? (

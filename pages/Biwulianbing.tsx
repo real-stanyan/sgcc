@@ -8,19 +8,17 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../src/components/ui/breadcrumb";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "../src/components/ui/table";
-import BiwulianbingData from "../data/biwulianbing.json";
-import { Input } from "../src/components/ui/input";
-import { X, Search } from "lucide-react";
+import { X } from "lucide-react";
+import GuangRongBang from "../components/tables/BiwulianbingTables/GuangRongBang";
+import BiwulianbingTable from "../components/tables/BiwulianbingTables/Biwulianbing";
+
+const Boxes = [
+  { name: "“赛马制”练兵比武", icon: "/icons/biwulianbing_icon_white.webp" },
+  { name: "光荣榜", icon: "/icons/guangrongbang.webp" },
+];
 
 const Biwulianbing = () => {
+  const [currentBox, setCurrentBox] = useState("“赛马制”练兵比武");
   const [window, setWindow] = useState({
     show: false,
     index: 0,
@@ -52,6 +50,17 @@ const Biwulianbing = () => {
   };
 
   const handleClose = () => setWindow({ ...window, show: false });
+
+  const returnTable = (name: string) => {
+    switch (name) {
+      case "“赛马制”练兵比武":
+        return <BiwulianbingTable handleSetWindow={handleSetWindow} />;
+      case "光荣榜":
+        return <GuangRongBang />;
+      default:
+        return null;
+    }
+  };
 
   return (
     <div
@@ -144,108 +153,57 @@ const Biwulianbing = () => {
             请用大屏查看表格
           </h1>
         </div>
-        {/* Table */}
-        <div className="w-full">
-          <div className="flex justify-end items-center w-full h-[50px] relative mb-[10px]">
-            <Input
-              className={`
-            w-[30%] border border-gray-400
-            `}
-              placeholder="搜索关键词"
-            />
-            <Search className="absolute right-3 top-[13px] w-[22px] h-[22px] text-gray-400" />
-          </div>
-          <div className="hidden lg:block">
-            {/* 表头 */}
-            <div className="overflow-hidden border-t-4 border-[#12a1a0]">
-              <Table className="table-fixed w-full">
-                <TableHeader className="bg-black/10">
-                  <TableRow>
-                    {[
-                      ["序号", "w-[5%]"],
-                      ["比武项目", "w-[10%]"],
-                      ["内容", "w-[18%]"],
-                      ["牵头部门", "w-[9%]"],
-                      ["开展时间", "w-[8%]"],
-                      ["比武时间", "w-[8%]"],
-                      ["挂钩领导", "w-[8%]"],
-                      ["责任人", "w-[8%]"],
-                      ["联系人", "w-[8%]"],
-                      ["进展情况", "w-[9%]"],
-                      ["功能", "w-[9%]"],
-                    ].map(([title, w]) => (
-                      <TableHead
-                        key={title}
-                        className={`${w} text-center font-bold sticky top-0 bg-black/10 z-10`}
-                      >
-                        {title}
-                      </TableHead>
-                    ))}
-                  </TableRow>
-                </TableHeader>
-              </Table>
-            </div>
 
-            {/* 可滚动表体 */}
-            <div className="max-h-[calc(100vh-200px)] overflow-y-auto">
-              <Table className="table-fixed w-full">
-                <TableBody>
-                  {BiwulianbingData.map((item, index) => (
-                    <TableRow
-                      key={item.index}
-                      className={`
-                    ${(index + 1) % 2 === 0 ? "bg-gray-200" : ""}
-                    `}
-                    >
-                      <TableCell className="w-[5%] text-center">
-                        {item.index}
-                      </TableCell>
-                      <TableCell className="w-[10%] text-center truncate">
-                        {item.project}
-                      </TableCell>
-                      <TableCell className="w-[18%] text-left break-words whitespace-pre-wrap">
-                        <p className="line-clamp-2 cursor-pointer">
-                          {item.content}
-                        </p>
-                      </TableCell>
-                      <TableCell className="w-[9%] text-center">
-                        {item.header_office}
-                      </TableCell>
-                      <TableCell className="w-[8%] text-center">
-                        {item.duration}
-                      </TableCell>
-                      <TableCell className="w-[8%] text-center">
-                        {item.date}
-                      </TableCell>
-                      <TableCell className="w-[8%] text-center">
-                        {item.manager}
-                      </TableCell>
-                      <TableCell className="w-[8%] text-center">
-                        {item.responsibler}
-                      </TableCell>
-                      <TableCell className="w-[8%] text-center">
-                        {item.contact}
-                      </TableCell>
-                      <TableCell className="w-[9%] text-left break-words whitespace-pre-wrap">
-                        <p className="line-clamp-2 cursor-pointer">
-                          {item.progress}
-                        </p>
-                      </TableCell>
-                      <TableCell
-                        className="w-[9%] text-center cursor-pointer"
-                        onClick={() => handleSetWindow(item)}
-                      >
-                        <p className="text-gray-400 underline font-bold text-md">
-                          查看详细
-                        </p>
-                      </TableCell>
-                    </TableRow>
-                  ))}
-                </TableBody>
-              </Table>
+        {/* box */}
+        <div
+          className={`
+              w-full hidden lg:flex justify-center items-center gap-4
+            `}
+        >
+          {Boxes.map((box, index) => (
+            <div
+              key={index}
+              className="flex flex-col justify-center items-center gap-1"
+            >
+              <div
+                className={`
+                border
+              ${
+                currentBox === box.name
+                  ? "bg-[#12a1a0] text-white border-white"
+                  : "bg-white text-black border-black"
+              }
+                p-2 w-[200px] text-center cursor-pointer whitespace-nowrap
+                flex justify-center items-center gap-1
+              `}
+                onClick={() => setCurrentBox(box.name)}
+              >
+                <img
+                  src={box.icon}
+                  alt="tuandui"
+                  className={`
+                w-[25px] h-auto ${currentBox === box.name ? "" : "invert"}
+                `}
+                />
+                <h1>{box.name}</h1>
+              </div>
+              <div
+                className={`
+                w-0 h-0 border-l-[10px] border-l-transparent
+                border-r-[10px] border-r-transparent
+                border-t-[10px] border-t-[#12a1a0]
+                ${
+                  currentBox === box.name
+                    ? "border-t-[#12a1a0]"
+                    : "border-t-white"
+                }
+            `}
+              ></div>
             </div>
-          </div>
+          ))}
         </div>
+        {/* Table */}
+        <div className="w-full hidden lg:block">{returnTable(currentBox)}</div>
       </div>
     </div>
   );

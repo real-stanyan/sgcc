@@ -60,7 +60,7 @@ const A = () => {
             中电联技能竞赛
           </h1>
         </div>
-        <div className="grid grid-cols-2 mb-[100px]">
+        <div className="grid grid-cols-2 mb-[100px] gap-8">
           {Rank.map((item, index) => (
             <div
               key={index}
@@ -90,7 +90,7 @@ const A = () => {
         >
           <h1 className="text-white text-2xl font-semibold pt-1">省公司比武</h1>
         </div>
-        <div className="grid grid-cols-2">
+        <div className="grid grid-cols-2 gap-8">
           {BiWu.map((item, index) => (
             <div
               key={index}
