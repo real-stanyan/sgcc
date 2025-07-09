@@ -21,10 +21,12 @@ const YaoWen = [
   {
     content: "公司召开2025年柔性团队建设工作推进会",
     date: "06-20",
+    url: "/news/yaowen1",
   },
   {
     content: "公司召开2025年“赛马制”练兵比武暨劳动竞赛工作推进会",
     date: "06-13",
+    url: "/news/yaowen2",
   },
 ];
 
@@ -32,10 +34,12 @@ const KuaiXun = [
   {
     content: "人资部、人资服务室：发布自办班流程指南，全力推进夏训班实施",
     date: "06-24",
+    url: "/news/kuaixun1",
   },
   {
     content: "【夏训班】变电运维中心：开展“无脚本”防汛专项演练",
     date: "06-25",
+    url: "/news/kuaixun2",
   },
 ];
 
@@ -169,10 +173,13 @@ const HomeHeader = () => {
                 <div className="w-[100px] h-[40px] bg-[#12a1a0] text-white text-xl font-black flex items-center justify-center">
                   要闻
                 </div>
-                <h1 className="flex justify-center items-center gap-1 text-gray-400 font-light text-sm">
+                <Link
+                  to={"/news?item=yaowen"}
+                  className="flex justify-center items-center gap-1 text-gray-400 font-light text-sm hover:underline"
+                >
                   查看详细
                   <MoveRight className="w-[20px]" />
-                </h1>
+                </Link>
               </div>
               <div className="flex flex-col gap-4 mt-4 mb-[20px] w-full lg:w-[90%]">
                 {YaoWen.map((item, index) => (
@@ -181,6 +188,7 @@ const HomeHeader = () => {
                     index={index + 1}
                     title={item.content}
                     date={item.date}
+                    url={item.url}
                   />
                 ))}
               </div>
@@ -191,10 +199,13 @@ const HomeHeader = () => {
                 <div className="w-[100px] h-[40px] bg-[#12a1a0] text-white text-xl font-black flex items-center justify-center">
                   快讯
                 </div>
-                <h1 className="flex justify-center items-center gap-1 text-gray-400 font-light text-sm">
+                <Link
+                  to={"/news?item=kuaixun"}
+                  className="flex justify-center items-center gap-1 text-gray-400 font-light text-sm"
+                >
                   查看详细
                   <MoveRight className="w-[20px]" />
-                </h1>
+                </Link>
               </div>
               <div className="flex flex-col gap-4 mt-4 mb-[80px] w-full lg:w-[90%]">
                 {KuaiXun.map((item, index) => (
@@ -203,6 +214,7 @@ const HomeHeader = () => {
                     index={index + 1}
                     title={item.content}
                     date={item.date}
+                    url={item.url}
                   />
                 ))}
               </div>
@@ -232,12 +244,14 @@ const NewsLine = ({
   index,
   title,
   date,
+  url,
 }: {
   index: number;
   title: string;
   date: string;
+  url: string;
 }) => (
-  <div className="flex items-center gap-2">
+  <Link to={url} className="flex items-center gap-2 group cursor-pointer">
     <div
       className={`
       ${index % 2 ? "bg-[#12a1a0] text-white" : "bg-gray-200 text-black"}
@@ -246,9 +260,9 @@ const NewsLine = ({
     >
       {index}
     </div>
-    <div className="flex-1 truncate">{title}</div>
+    <div className="flex-1 truncate group-hover:underline">{title}</div>
     <div>{date}</div>
-  </div>
+  </Link>
 );
 
 export default HomeHeader;
