@@ -5,7 +5,7 @@ import { MoveRight } from "lucide-react";
 const Links = [
   { name: "首页", icon: "/icons/home_icon.webp", url: "/" },
   {
-    name: "练兵比武",
+    name: "“赛马制”练兵比武",
     icon: "/icons/biwulianbing_icon.webp",
     url: "/biwulianbing",
   },
@@ -110,7 +110,7 @@ const HomeHeader = () => {
             <img
               src={item.icon}
               className={`
-              w-[15%] h-auto ${link === item.name ? "invert" : ""}
+              w-[10%] h-auto ${link === item.name ? "invert" : ""}
               `}
             />
             <h1>{item.name}</h1>
