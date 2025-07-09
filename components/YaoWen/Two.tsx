@@ -7,7 +7,7 @@ const Two = () => {
   return (
     <div
       className={`
-            border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] mx-auto
+            border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] mx-auto pb-[70vh]
             `}
     >
       <h1
@@ -20,7 +20,7 @@ const Two = () => {
         暨劳动竞赛工作推进会
       </h1>
       <hr className="border-0 bg-gray-300 h-[3px] rounded w-[95%] mx-auto" />
-      <div className="w-[80%] flex flex-col lg:flex-row justify-around items-center mx-auto text-lg">
+      <div className="w-[80%] flex flex-col lg:flex-row justify-around items-center mx-auto text-lg pt-2">
         <div>发布日期: 2025-06-25</div>
         <div>访问次数: --</div>
         <div>作者: 严凌霄 朱杰</div>
