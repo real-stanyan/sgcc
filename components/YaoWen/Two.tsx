@@ -7,7 +7,8 @@ const Two = () => {
   return (
     <div
       className={`
-            border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] mx-auto pb-[70vh]
+            border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] 
+            mx-auto min-h-[170vh] relative
             `}
     >
       <h1
@@ -74,6 +75,25 @@ const Two = () => {
         </h1>
         <h1 className="indent-8 py-2">
           公司相关部门负责人，各县公司分管负责人参加会议。
+        </h1>
+      </div>
+
+      <div
+        className={`pt-[30px] ${
+          currentFont === "大"
+            ? "text-xl "
+            : currentFont === "中"
+            ? "text-md "
+            : currentFont === "小"
+            ? "text-sm "
+            : ""
+        }`}
+      >
+        <h1>
+          <strong>责编：</strong>蒋烨
+        </h1>
+        <h1>
+          <strong>审核：</strong>顾舒
         </h1>
       </div>
     </div>
