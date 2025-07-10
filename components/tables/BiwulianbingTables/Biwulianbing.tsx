@@ -1,7 +1,7 @@
 import BiwulianbingData from "../../../data/biwulianbing.json";
 
 const Biwulianbing = ({ handleSetWindow }: { handleSetWindow: any }) => (
-  <div>
+  <div className="w-full max-h-[70vh] overflow-x-hidden overflow-y-scroll border-t-4 border-[#12a1a0]">
     <table className="w-full table-fixed">
       <colgroup>
         <col style={{ width: "8%" }} />
@@ -14,8 +14,8 @@ const Biwulianbing = ({ handleSetWindow }: { handleSetWindow: any }) => (
         <col style={{ width: "17%" }} />
       </colgroup>
 
-      <thead className="bg-gray-200 border-t-4 border-[#12a1a0]">
-        <tr className="h-[50px]">
+      <thead>
+        <tr className="sticky top-0 bg-gray-200 z-10 h-[50px]">
           <th className="text-center">序号</th>
           <th className="text-center">比武项目</th>
           <th className="text-center">牵头部门</th>

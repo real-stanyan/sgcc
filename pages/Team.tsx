@@ -78,11 +78,11 @@ const Team = () => {
                 {window.manager}
               </li>
               <li>
-                <strong>团队负责人：</strong>
+                <strong>组长：</strong>
                 {window.team_leader}
               </li>
               <li>
-                <strong>区域：</strong>
+                <strong>专业领域：</strong>
                 {window.area}
               </li>
               <li>
@@ -90,11 +90,11 @@ const Team = () => {
                 {window.team_sub_leader}
               </li>
               <li>
-                <strong>研究课题：</strong>
+                <strong>研究方向：</strong>
                 {window.research_titles.join(", ")}
               </li>
               <li>
-                <strong>项目：</strong>
+                <strong>在研项目：</strong>
                 {window.projects.join(", ")}
               </li>
               <li>
