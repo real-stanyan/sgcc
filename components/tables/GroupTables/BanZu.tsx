@@ -15,6 +15,7 @@ import Biandianxueshi from "./Biandianxueshi";
 import Shuzihua from "./Shuzihua";
 import Dianlanyunjian from "./Dianlanyunjian";
 import Shudianyunjian from "./Shudianyunjian";
+import Peidianyunjian from "./Peidianyunjian";
 import Tongxing from "./Tongxing";
 import { Link } from "lucide-react";
 
@@ -249,6 +250,8 @@ const BanZu: React.FC = () => {
         <Shudianyunjian />
       ) : currentPingjia.includes("通信") ? (
         <Tongxing />
+      ) : currentPingjia === "配电运检" ? (
+        <Peidianyunjian />
       ) : (
         ""
       )}

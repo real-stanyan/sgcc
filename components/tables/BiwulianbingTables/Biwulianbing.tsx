@@ -96,7 +96,7 @@ const Biwulianbing: React.FC<Props> = ({ handleSetWindow }) => (
             "责任人",
             "联系人",
             "进展情况",
-            "功能",
+            "详情",
           ].map((title, i) => (
             <th key={i} className="text-center">
               {title}
@@ -113,7 +113,7 @@ const Biwulianbing: React.FC<Props> = ({ handleSetWindow }) => (
             <td className="text-center h-[80px]">{item.manager}</td>
             <td className="text-center h-[80px]">{item.responsibler}</td>
             <td className="text-center h-[80px]">{item.contact}</td>
-            <td className="break-words whitespace-pre-wrap h-[80px] line-clamp-2 px-2">
+            <td className="text-left h-[80px] px-2 truncate">
               {item.progress}
             </td>
             <td className="text-center h-[80px]">
