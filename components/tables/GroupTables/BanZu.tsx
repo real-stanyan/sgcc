@@ -9,6 +9,7 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../../../src/components/ui/breadcrumb";
+import { Link } from "lucide-react";
 
 interface Props {
   handleSetWindow: (item: any) => void;
@@ -16,15 +17,14 @@ interface Props {
 
 const colWidthsMingCheng = [
   "4%",
-  "6%",
-  "10%",
   "8%",
+  "13%",
+  "16%",
   "8%",
   "8%",
   "16%",
   "20%",
-  "10%",
-  "10%",
+  "7%",
 ];
 const colWidthsRenYuan = [
   "4%",
@@ -91,7 +91,6 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
                   "业务类型覆盖率",
                   "自主实施比例",
                   "加分项",
-                  "查看",
                   "功能",
                 ].map((t, i) => (
                   <th key={i} className="text-center">
@@ -106,19 +105,24 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
                   <td className="text-center h-[80px]">{item.id}</td>
                   <td className="text-center h-[80px]">{item.danwei}</td>
                   <td className="text-center h-[80px]">{item.bumen}</td>
-                  <td className="text-center h-[80px]">{item.banzu_name}</td>
+                  <td
+                    className="text-center h-[80px] group cursor-pointer"
+                    onClick={() => setCurrentBanzu(item.banzu_name)}
+                  >
+                    <p
+                      className={`
+                      flex justify-center items-center gap-2 whitespace-nowrap
+                      group-hover:underline
+                      `}
+                    >
+                      {item.banzu_name}
+                      <Link />
+                    </p>
+                  </td>
                   <td className="text-center h-[80px]">{item.banzu_type}</td>
                   <td className="text-center h-[80px]">{item.percent}</td>
                   <td className="text-left h-[80px] p-4">{item.bili}</td>
                   <td className="text-left h-[80px] p-4">{item.jiafenxiang}</td>
-                  <td className="text-center h-[80px]">
-                    <h1
-                      className="underline text-gray-600 cursor-pointer"
-                      onClick={() => setCurrentBanzu(item.banzu_name)}
-                    >
-                      查看
-                    </h1>
-                  </td>
                   <td className="text-center h-[80px]">
                     <button
                       className="underline text-gray-600"
