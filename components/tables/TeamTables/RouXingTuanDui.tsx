@@ -71,21 +71,21 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
             <td className="text-left h-[80px] truncate">
               {item.team_sub_leader.join("、")}
             </td>
-            <td className="text-left h-[80px] truncate">
+            <td className="text-left h-[80px] truncate p-2">
               {item.research_titles.join("、")}
             </td>
-            <td className="text-left h-[80px] truncate">
+            <td className="text-left h-[80px] truncate p-2">
               {item.projects.join("、")}
             </td>
-            <td className="text-left h-[80px] truncate">
+            <td className="text-left h-[80px] truncate p-2">
               {item.team_heros.join("、")}
             </td>
-            <td className="text-center h-[80px] whitespace-pre-wrap truncate">
+            <td className="text-center h-[80px] whitespace-pre-wrap truncate p-2">
               {item.contact.name}
               <br />
               {item.contact.number}
             </td>
-            <td className="text-left h-[80px] line-clamp-2">
+            <td className="text-left h-[80px] line-clamp-2 p-2">
               {item.team_members.join("、")}
             </td>
             <td className="text-center h-[80px]">

@@ -22,9 +22,9 @@ const colWidthsMingCheng = [
   "8%",
   "8%",
   "16%",
-  "30%",
-  "5%",
-  "5%",
+  "20%",
+  "10%",
+  "10%",
 ];
 const colWidthsRenYuan = [
   "4%",
@@ -109,8 +109,8 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
                   <td className="text-center h-[80px]">{item.banzu_name}</td>
                   <td className="text-center h-[80px]">{item.banzu_type}</td>
                   <td className="text-center h-[80px]">{item.percent}</td>
-                  <td className="text-left h-[80px]">{item.bili}</td>
-                  <td className="text-left h-[80px]">{item.jiafenxiang}</td>
+                  <td className="text-left h-[80px] p-4">{item.bili}</td>
+                  <td className="text-left h-[80px] p-4">{item.jiafenxiang}</td>
                   <td className="text-center h-[80px]">
                     <h1
                       className="underline text-gray-600 cursor-pointer"
