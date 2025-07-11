@@ -9,11 +9,14 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../../../src/components/ui/breadcrumb";
+import Diya from "./Diya";
+import Biandianerci from "./Biandianerci";
+import Biandianxueshi from "./Biandianxueshi";
+import Shuzihua from "./Shuzihua";
+import Dianlanyunjian from "./Dianlanyunjian";
+import Shudianyunjian from "./Shudianyunjian";
+import Tongxing from "./Tongxing";
 import { Link } from "lucide-react";
-
-interface Props {
-  handleSetWindow: (item: any) => void;
-}
 
 const colWidthsMingCheng = [
   "4%",
@@ -43,8 +46,9 @@ const colWidthsRenYuan = [
   "7%",
 ];
 
-const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
+const BanZu: React.FC = () => {
   const [currentBanzu, setCurrentBanzu] = useState<string>("");
+  const [currentPingjia, setCurrentPingjia] = useState<string>("");
   return (
     <>
       <Breadcrumb>
@@ -63,6 +67,16 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
                 <BreadcrumbPage>{currentBanzu}</BreadcrumbPage>
               </BreadcrumbItem>
             </>
+          ) : currentPingjia ? (
+            <>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/group">一线核心标杆班组</BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator />
+              <BreadcrumbItem>
+                <BreadcrumbPage>{currentPingjia}</BreadcrumbPage>
+              </BreadcrumbItem>
+            </>
           ) : (
             <BreadcrumbItem>
               <BreadcrumbPage>一线核心标杆班组</BreadcrumbPage>
@@ -72,7 +86,7 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
       </Breadcrumb>
 
       {/* 班组名称列表 */}
-      {!currentBanzu && (
+      {!currentBanzu && !currentPingjia && (
         <div className="w-full h-auto border-t-4 border-[#12a1a0]">
           <table className="w-full table-fixed">
             <colgroup>
@@ -126,9 +140,9 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
                   <td className="text-center h-[80px]">
                     <button
                       className="underline text-gray-600"
-                      onClick={() => handleSetWindow(item)}
+                      onClick={() => setCurrentPingjia(item.banzu_type)}
                     >
-                      查看详细
+                      评价标准
                     </button>
                   </td>
                 </tr>
@@ -139,7 +153,7 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
       )}
 
       {/* 班组人员列表 */}
-      {currentBanzu && (
+      {currentBanzu && !currentPingjia && (
         <div className="w-full h-auto border-t-4 border-[#12a1a0]">
           <table className="w-full table-fixed">
             <colgroup>
@@ -217,6 +231,26 @@ const BanZu: React.FC<Props> = ({ handleSetWindow }) => {
             </tbody>
           </table>
         </div>
+      )}
+
+      {/* 评价标准 */}
+
+      {!currentBanzu && currentPingjia && currentPingjia === "低压综合服务" ? (
+        <Diya />
+      ) : currentPingjia === "变电二次检修" ? (
+        <Biandianerci />
+      ) : currentPingjia === "变电修试" ? (
+        <Biandianxueshi />
+      ) : currentPingjia.includes("数字化") ? (
+        <Shuzihua />
+      ) : currentPingjia === "电缆运检" ? (
+        <Dianlanyunjian />
+      ) : currentPingjia === "输电运检" ? (
+        <Shudianyunjian />
+      ) : currentPingjia.includes("通信") ? (
+        <Tongxing />
+      ) : (
+        ""
       )}
     </>
   );

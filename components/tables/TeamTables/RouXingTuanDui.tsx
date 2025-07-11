@@ -18,19 +18,7 @@ interface Props {
   handleSetWindow: (item: Item) => void;
 }
 
-const colWidths = [
-  "4%",
-  "6%",
-  "6%",
-  "8%",
-  "8%",
-  "12%",
-  "16%",
-  "8%",
-  "10%",
-  "16%",
-  "6%",
-];
+const colWidths = ["7%", "9%", "9%", "11%", "11%", "15%", "19%", "13%", "9%"];
 
 const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
   <div className="w-full h-auto border-t-4 border-[#12a1a0]">
@@ -49,13 +37,11 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
           <th className="text-center">副组长</th>
           <th className="text-center">研究方向</th>
           <th className="text-center">在研项目</th>
-          <th className="text-center">团队骨干</th>
           <th className="text-center">
             联系人及
             <br />
             联系方式
           </th>
-          <th className="text-center">团队成员</th>
           <th className="text-center">功能</th>
         </tr>
       </thead>
@@ -77,16 +63,10 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
             <td className="text-left h-[80px] truncate p-2">
               {item.projects.join("、")}
             </td>
-            <td className="text-left h-[80px] truncate p-2">
-              {item.team_heros.join("、")}
-            </td>
             <td className="text-center h-[80px] whitespace-pre-wrap truncate p-2">
               {item.contact.name}
               <br />
               {item.contact.number}
-            </td>
-            <td className="text-left h-[80px] line-clamp-2 p-2">
-              {item.team_members.join("、")}
             </td>
             <td className="text-center h-[80px]">
               <button
