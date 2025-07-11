@@ -2,14 +2,6 @@ import { useState } from "react";
 import Header from "../components/common/Header";
 import Banzu from "../components/tables/GroupTables/BanZu";
 import { X } from "lucide-react";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "../src/components/ui/breadcrumb";
 
 const Group = () => {
   const [banzuWindow, setBanzuWindow] = useState({
@@ -39,7 +31,7 @@ const Group = () => {
   const handleClose = () => setBanzuWindow({ ...banzuWindow, show: false });
 
   return (
-    <div className="pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
+    <div className="bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
       <Header />
 
       {/* banzuWindow */}
@@ -99,18 +91,6 @@ const Group = () => {
         className="w-full h-full object-cover"
       />
       <div className="w-full px-12 py-14 flex flex-col items-start gap-[80px] pb-[50vh]">
-        {/* Breadcrumb */}
-        <Breadcrumb>
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbLink href="/">首页</BreadcrumbLink>
-            </BreadcrumbItem>
-            <BreadcrumbSeparator />
-            <BreadcrumbItem>
-              <BreadcrumbPage>一线核心标杆班组</BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
         {/* pe text */}
         <div
           className={`

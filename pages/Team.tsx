@@ -53,7 +53,7 @@ const Team = () => {
   const handleClose = () => setWindow({ ...window, show: false });
 
   return (
-    <div className="pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
+    <div className="bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
       <Header />
       {/* window */}
       {window.show && (

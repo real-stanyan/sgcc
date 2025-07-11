@@ -65,7 +65,7 @@ const Biwulianbing = () => {
   return (
     <div
       className={`
-        pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom
+        bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom
         bg-no-repeat relative
         `}
     >

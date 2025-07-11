@@ -43,7 +43,7 @@ const Header = () => {
   return (
     <div
       className={`
-      fixed top-0 left-0 w-full h-[80px] z-50 
+       w-full h-[80px] z-50 relative
       `}
     >
       <div

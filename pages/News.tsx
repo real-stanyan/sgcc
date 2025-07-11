@@ -94,7 +94,7 @@ const News = () => {
   const [currentBox, setCurrentBox] = useState<string>(param as string);
 
   return (
-    <div className="pt-[80px] bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
+    <div className="bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
       <Header />
       <img
         src="/images/team_banner.webp"
