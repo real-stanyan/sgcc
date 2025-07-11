@@ -191,42 +191,20 @@ const BanZu: React.FC = () => {
                 (item) => item.banzu_name === currentBanzu
               ).map((item, idx) => (
                 <tr key={item.id} className={idx % 2 ? "bg-gray-200" : ""}>
-                  <td className="text-center h-[80px] truncate">{item.id}</td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.danwei}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.bumen}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.banzu_name}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.banzu_type}
-                  </td>
-                  <td className="text-center h-[80px] truncate">{item.name}</td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.gender}
-                  </td>
-                  <td className="text-center h-[80px] truncate">{item.dob}</td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.gangwei}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.start_date}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.zuihao_xueli}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.title}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.skill}
-                  </td>
-                  <td className="text-center h-[80px] truncate">
-                    {item.level}
-                  </td>
+                  <td className="text-center h-[80px] ">{idx + 1}</td>
+                  <td className="text-center h-[80px] ">{item.danwei}</td>
+                  <td className="text-center h-[80px] ">{item.bumen}</td>
+                  <td className="text-center h-[80px] ">{item.banzu_name}</td>
+                  <td className="text-center h-[80px] ">{item.banzu_type}</td>
+                  <td className="text-center h-[80px] ">{item.name}</td>
+                  <td className="text-center h-[80px] ">{item.gender}</td>
+                  <td className="text-center h-[80px] ">{item.dob}</td>
+                  <td className="text-center h-[80px] ">{item.gangwei}</td>
+                  <td className="text-center h-[80px] ">{item.start_date}</td>
+                  <td className="text-center h-[80px]">{item.zuihao_xueli}</td>
+                  <td className="text-center h-[80px]">{item.title}</td>
+                  <td className="text-center h-[80px]">{item.skill}</td>
+                  <td className="text-center h-[80px]">{item.level}</td>
                 </tr>
               ))}
             </tbody>

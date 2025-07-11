@@ -90,12 +90,12 @@ const Biwulianbing: React.FC<Props> = ({ handleSetWindow }) => (
         <tr className="h-[50px]">
           {[
             "序号",
-            "比武项目",
-            "牵头部门",
-            "挂钩领导",
-            "责任人",
+            "练兵比武项目",
+            "省公司主管部门",
+            "分管领导",
+            "项目负责人",
             "联系人",
-            "进展情况",
+            "比武进度（6月）",
             "详情",
           ].map((title, i) => (
             <th key={i} className="text-center">

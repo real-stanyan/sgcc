@@ -42,7 +42,7 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
             <br />
             联系方式
           </th>
-          <th className="text-center">功能</th>
+          <th className="text-center">详情</th>
         </tr>
       </thead>
       <tbody>
@@ -54,7 +54,7 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => (
               {item.team_leader}
             </td>
             <td className="text-center h-[80px] truncate">{item.area}</td>
-            <td className="text-left h-[80px] truncate">
+            <td className="text-center h-[80px] truncate">
               {item.team_sub_leader.join("、")}
             </td>
             <td className="text-left h-[80px] truncate p-2">

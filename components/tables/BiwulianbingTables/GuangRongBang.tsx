@@ -73,7 +73,7 @@ const GuangRongBang = () => {
   return (
     <div className="flex gap-2">
       {/* 比武练兵项目 */}
-      <div className="w-[25%] border bg-gray-100">
+      <div className="flex flex-col items-center justify-start w-[25%] h-auto border bg-gray-100">
         <div
           className={`
             tracking-widest text-center text-[#12a1a0] font-bold text-xl
@@ -82,7 +82,7 @@ const GuangRongBang = () => {
         >
           <h1>2024年比武练兵项目</h1>
         </div>
-        <div className="w-[95%] flex flex-col items-center justify-center gap-1 mx-auto pb-2">
+        <div className="w-[95%] h-auto flex flex-col items-center justify-center gap-1 mx-auto pb-2">
           {Projects.map((project, index) => (
             <div
               key={index}

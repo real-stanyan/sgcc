@@ -32,6 +32,7 @@ const Team = () => {
     contactName: "",
     contactNumber: "",
     team_members: [],
+    team_heros: [],
   });
 
   const handleSetWindow = (item: any) => {
@@ -47,6 +48,7 @@ const Team = () => {
       contactName: item.contact.name || "",
       contactNumber: item.contact.number || "",
       team_members: item.team_members || "",
+      team_heros: item.team_heros || "",
     });
   };
 
@@ -108,6 +110,10 @@ const Team = () => {
               <li>
                 <strong>团队成员：</strong>
                 {window.team_members.join("、")}
+              </li>
+              <li>
+                <strong>团队骨干：</strong>
+                {window.team_heros.join("、")}
               </li>
             </ul>
           </div>

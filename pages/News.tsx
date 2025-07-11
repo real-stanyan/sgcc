@@ -36,20 +36,25 @@ const NewsLine = ({
       hover:scale-103 duration-200 ease-in-out transition-all
     `}
     >
-      <div
-        className={`
+      <div className="flex justify-center items-center gap-2">
+        <div
+          className={`
           bg-[#12a1a0] text-white min-w-[20px] min-h-[20px] lg:min-w-[30px] lg:min-h-[30px]
            flex justify-center items-center rounded-xl
         `}
-      >
-        <h1 className="text-sm md:text-md lg:text-xl font-bold">{index + 1}</h1>
+        >
+          <h1 className="text-sm md:text-md lg:text-xl font-bold">
+            {index + 1}
+          </h1>
+        </div>
+        <div className="font-semibold text-lg truncate">{name}</div>
       </div>
+
       <div
         className={`
           flex justify-end items-center gap-1 md:gap-4 lg:gap-8 w-[70%]
         `}
       >
-        <div className="font-semibold text-lg truncate">{name}</div>
         <div className="font-light text-lg truncate">{date}</div>
       </div>
     </Link>
@@ -94,7 +99,7 @@ const News = () => {
   const [currentBox, setCurrentBox] = useState<string>(param as string);
 
   return (
-    <div className="bg-[url('/images/table_bg.webp')] bg-cover lg:bg-contain bg-bottom bg-no-repeat">
+    <div className="bg-[url('/images/table_bg.webp')] bg-cover bg-bottom bg-no-repeat min-h-[150vh]">
       <Header />
       <img
         src="/images/team_banner.webp"

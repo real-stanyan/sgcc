@@ -32,7 +32,7 @@ const H = () => (
           <div key={i} className="flex items-center justify-center gap-8">
             <img src="/images/rongyu.webp" alt="rongyu" />
             <div className="bg-[#e21120] w-[200px] h-[100px] text-white flex flex-col items-center justify-center rounded">
-              <h3 className="text-sm font-medium tracking-widest">
+              <h3 className="text-xl font-medium tracking-widest">
                 {item.rank.join(",")}
               </h3>
               <h1 className="text-2xl font-semibold">{item.name.join("、")}</h1>

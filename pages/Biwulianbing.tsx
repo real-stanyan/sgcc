@@ -93,11 +93,11 @@ const Biwulianbing = () => {
                 {window.content}
               </li>
               <li>
-                <strong>牵头部门：</strong>
+                <strong>省公司主管部门：</strong>
                 {window.header_office}
               </li>
               <li>
-                <strong>开展时间：</strong>
+                <strong>练兵时间段：</strong>
                 {window.duration}
               </li>
               <li>
@@ -105,11 +105,11 @@ const Biwulianbing = () => {
                 {window.date}
               </li>
               <li>
-                <strong>挂钩领导：</strong>
+                <strong>分管领导：</strong>
                 {window.manager}
               </li>
               <li>
-                <strong>责任人：</strong>
+                <strong>项目负责人：</strong>
                 {window.responsibler}
               </li>
               <li>
@@ -117,7 +117,7 @@ const Biwulianbing = () => {
                 {window.contact}
               </li>
               <li>
-                <strong>进展情况：</strong>
+                <strong>比武进度（6月）：</strong>
                 {window.progress}
               </li>
             </ul>

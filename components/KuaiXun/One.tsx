@@ -8,7 +8,7 @@ const One = () => {
     <div
       className={`
             border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] 
-            mx-auto min-h-[170vh] relative
+            mx-auto min-h-[100vh] relative
             `}
     >
       <h1
@@ -69,25 +69,6 @@ const One = () => {
         </h1>
         <h1 className="indent-8 py-2">
           据悉，自办班指南主要依据最新上级公司教育培训办法，突出自办班的规范性和实效性，主要分办班前、实施中和结束后三个环节中的关注点，指导各专业部门按图指引、规范办班。同时，人资服务室将进一步强化服务意识，主动对接办班各专业部门，帮助做好各项配套工作，确保夏训班有序有效实施，并取得实效。
-        </h1>
-      </div>
-
-      <div
-        className={`
-        flex justify-between items-center absolute right-0 bottom-60 w-[25%]
-        ${
-          currentFont === "大"
-            ? "text-xl "
-            : currentFont === "中"
-            ? "text-md "
-            : currentFont === "小"
-            ? "text-sm "
-            : ""
-        }
-        `}
-      >
-        <h1>
-          <strong>责任编辑：</strong>蒋烨
         </h1>
       </div>
     </div>

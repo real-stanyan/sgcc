@@ -97,28 +97,6 @@ const One = () => {
           <strong>审核：</strong>顾舒
         </h1>
       </div>
-
-      <div
-        className={`
-        flex justify-between items-center absolute right-0 bottom-60 w-[25%]
-        ${
-          currentFont === "大"
-            ? "text-xl "
-            : currentFont === "中"
-            ? "text-md "
-            : currentFont === "小"
-            ? "text-sm "
-            : ""
-        }
-        `}
-      >
-        <h1>
-          <strong>稿件来源：</strong>人资部
-        </h1>
-        <h1>
-          <strong>责任编辑：</strong>蒋烨
-        </h1>
-      </div>
     </div>
   );
 };

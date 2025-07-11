@@ -10,7 +10,7 @@ const JiFen = () => (
         <col style={{ width: "20%" }} />
       </colgroup>
       <thead>
-        <tr className="bg-gray-100 border-t-4 border-[#12a1a0]">
+        <tr className="bg-gray-100 border-t-4 border-[#12a1a0] h-[60px]">
           {[
             "评价维度",
             "最高限值",

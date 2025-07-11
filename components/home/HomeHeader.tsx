@@ -97,20 +97,15 @@ const HomeHeader = () => {
             to={item.url}
             key={index}
             className={`
-        relative z-10 flex-1 flex justify-center items-center gap-2 h-full font-semibold text-md
-        ${
-          link === item.name
-            ? "bg-[#12a1a0] text-white"
-            : "bg-transparent text-black hover:bg-[#12a1a0]/50 hover:text-white"
-        }
-        duration-200 transition-colors ease-in-out
+        relative z-10 flex-1 flex justify-center items-center gap-2 h-full font-semibold text-md group
+        duration-200 transition-colors ease-in-out bg-transparent text-black hover:bg-[#12a1a0]/50 hover:text-white
       `}
             onClick={() => setLink(item.name)}
           >
             <img
               src={item.icon}
               className={`
-              w-[10%] h-auto ${link === item.name ? "invert" : ""}
+              w-[10%] h-auto group-hover:invert
               `}
             />
             <h1>{item.name}</h1>

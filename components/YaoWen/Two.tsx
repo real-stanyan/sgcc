@@ -8,7 +8,7 @@ const Two = () => {
     <div
       className={`
             border-t-6 border-[#12a1a0] w-[90%] md:w-[80%] lg:w-[70%] 
-            mx-auto min-h-[170vh] relative
+            mx-auto min-h-[100vh] relative
             `}
     >
       <h1
