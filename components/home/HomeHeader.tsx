@@ -224,7 +224,13 @@ const HomeHeader = () => {
             </div>
           </div>
           {/* right */}
-          <div className="hidden lg:flex flex-1 bg-gray-600 z-20"></div>
+          <div className="hidden lg:flex flex-1 bg-gray-600 z-20">
+            <img
+              src="/images/home_image.webp"
+              alt="home_image"
+              className="w-full h-full object-cover"
+            />
+          </div>
           {/* right_padding */}
           <div className="min-w-[10vw] hidden lg:flex items-end">
             <div className="min-w-full min-h-[120px] bg-[#12a1a0]"></div>
