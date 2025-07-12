@@ -48,7 +48,7 @@ const HomeHeader = () => {
   const [link, setLink] = useState("首页");
 
   return (
-    <div className="relative overflow-visible">
+    <div className="relative overflow-visible h-[100vh] flex flex-col">
       <div
         className={`
             bg-[#12a1a0] w-[180px] lg:w-[250px] h-[80px] flex justify-center items-center
@@ -151,7 +151,7 @@ const HomeHeader = () => {
       <div
         className={`
       w-[90%] lg:w-full bg-white mt-[20px] mx-auto relative overflow-visible z-10
-      rounded
+      rounded h-full flex-1
         `}
       >
         {/* left/right & news lines */}
