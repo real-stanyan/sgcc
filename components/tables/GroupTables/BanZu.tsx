@@ -17,7 +17,7 @@ import Dianlanyunjian from "./Dianlanyunjian";
 import Shudianyunjian from "./Shudianyunjian";
 import Peidianyunjian from "./Peidianyunjian";
 import Tongxing from "./Tongxing";
-import { Link } from "lucide-react";
+import { LinkIcon } from "lucide-react";
 
 const colWidthsMingCheng = [
   "4%",
@@ -61,7 +61,15 @@ const BanZu: React.FC = () => {
           {currentBanzu ? (
             <>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/group">一线核心标杆班组</BreadcrumbLink>
+                <h1
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setCurrentBanzu("");
+                    setCurrentPingjia("");
+                  }}
+                >
+                  一线核心标杆班组
+                </h1>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -71,7 +79,15 @@ const BanZu: React.FC = () => {
           ) : currentPingjia ? (
             <>
               <BreadcrumbItem>
-                <BreadcrumbLink href="/group">一线核心标杆班组</BreadcrumbLink>
+                <h1
+                  className="cursor-pointer"
+                  onClick={() => {
+                    setCurrentBanzu("");
+                    setCurrentPingjia("");
+                  }}
+                >
+                  一线核心标杆班组
+                </h1>
               </BreadcrumbItem>
               <BreadcrumbSeparator />
               <BreadcrumbItem>
@@ -131,7 +147,7 @@ const BanZu: React.FC = () => {
                       `}
                     >
                       {item.banzu_name}
-                      <Link />
+                      <LinkIcon />
                     </p>
                   </td>
                   <td className="text-center h-[80px]">{item.banzu_type}</td>
