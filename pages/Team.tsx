@@ -26,7 +26,7 @@ const Team = () => {
     manager: "",
     team_leader: "",
     area: "",
-    team_sub_leader: "",
+    team_sub_leader: [],
     research_titles: [],
     projects: [],
     contactName: "",
@@ -89,7 +89,7 @@ const Team = () => {
               </li>
               <li>
                 <strong>副组长：</strong>
-                {window.team_sub_leader}
+                {window.team_sub_leader.join(", ")}
               </li>
               <li>
                 <strong>研究方向：</strong>
