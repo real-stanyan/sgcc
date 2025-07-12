@@ -224,7 +224,7 @@ const HomeHeader = () => {
             </div>
           </div>
           {/* right */}
-          <div className="hidden lg:flex flex-1 bg-gray-600 z-20">
+          <div className="hidden lg:flex flex-1 bg-gray-600 z-20 rounded-tl rounded-tr overflow-hidden">
             <img
               src="/images/home_image.webp"
               alt="home_image"
