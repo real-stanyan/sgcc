@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/common/Header";
 import {
   Breadcrumb,
@@ -62,14 +62,23 @@ const NewsLine = ({
 };
 
 const YaoWenList = () => {
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/ReturnAllYaoWen")
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .then(setData);
+  }, []);
+
   return (
     <>
-      {YaoWenData.map((item, index) => (
+      {data.map((item, i) => (
         <NewsLine
-          index={index}
-          name={item.name}
-          date={item.date}
-          path={item.path}
+          key={i}
+          index={i}
+          name={item.title}
+          date={item.release_date}
+          path={`/yaowen/${item.id}`}
         />
       ))}
     </>
@@ -77,14 +86,23 @@ const YaoWenList = () => {
 };
 
 const KuaiXunList = () => {
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/ReturnAllKuaiXun")
+      .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
+      .then(setData);
+  }, []);
+
   return (
     <>
-      {KuaiXunData.map((item, index) => (
+      {data.map((item, i) => (
         <NewsLine
-          index={index}
-          name={item.name}
-          date={item.date}
-          path={item.path}
+          key={i}
+          index={i}
+          name={item.title}
+          date={item.release_date}
+          path={`/kuaixun/${item.id}`}
         />
       ))}
     </>
