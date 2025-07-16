@@ -14,6 +14,7 @@ import Yaowen from "../pages/Yaowen";
 import Kuaixun from "../pages/Kuaixun";
 import AuthRoute from "../components/common/AuthRoute";
 import Dashboard from "../pages/Dashboard";
+import BiwulianbingEdit from "../pages/BiwulianbingEdit";
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "../src/components/ui/sonner";
 
@@ -58,6 +59,14 @@ function App() {
           element={
             <AuthRoute>
               <AddNewKuaiXun />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/biwulianbingedit"
+          element={
+            <AuthRoute>
+              <BiwulianbingEdit />
             </AuthRoute>
           }
         />

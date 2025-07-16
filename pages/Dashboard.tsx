@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Newspaper } from "lucide-react";
+import { Newspaper, Database, ShieldQuestionMark } from "lucide-react";
 
 type Item = {
   name: string;
@@ -14,29 +14,29 @@ const items: Item[] = [
     url: "/addnewyaowen",
   },
   {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
+    name: "“赛马制”练兵比武 | 数据管理",
+    icon: Database,
+    url: "/biwulianbingedit",
   },
   {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
+    name: "开发中...",
+    icon: ShieldQuestionMark,
+    url: "#",
   },
   {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
+    name: "开发中...",
+    icon: ShieldQuestionMark,
+    url: "#",
   },
   {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
+    name: "开发中...",
+    icon: ShieldQuestionMark,
+    url: "#",
   },
   {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
+    name: "开发中...",
+    icon: ShieldQuestionMark,
+    url: "#",
   },
 ];
 
@@ -49,7 +49,7 @@ const Dashboard = () => {
     >
       <div
         className={`
-        w-[50%] h-auto flex flex-col justify-center items-center gap-4
+        w-[80%] h-auto flex flex-col justify-center items-center gap-8
         `}
       >
         <img
@@ -59,7 +59,7 @@ const Dashboard = () => {
             w-[150px] h-auto
             `}
         />
-        <h1 className="text-white text-3xl font-bold">管理员操控面板</h1>
+        <h1 className="text-white text-4xl font-bold">管理员操控面板</h1>
         <div
           className={`
             grid grid-cols-2 gap-4 w-full
@@ -72,13 +72,13 @@ const Dashboard = () => {
                 key={index}
                 to={item.url}
                 className={`
-            flex justify-center items-center gap-2 border border-white text-white
+            flex justify-center items-center gap-4 border-2 border-white text-white
             px-4 py-2 rounded-md hover:bg-white hover:text-[#12a1a0] duration-200
-            ease-in-out transition-colors cursor-pointer text-3xl
+            ease-in-out transition-colors cursor-pointer text-3xl h-[90px]
             `}
               >
-                <Icon />
-                <h1>{item.name}</h1>
+                <Icon size={50} />
+                <h1 className="whitespace-nowrap font-bold">{item.name}</h1>
               </Link>
             );
           })}

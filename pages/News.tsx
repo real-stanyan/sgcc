@@ -8,8 +8,6 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "../src/components/ui/breadcrumb";
-import YaoWenData from "../data/yaowen.json";
-import KuaiXunData from "../data/kuaixun.json";
 import { Link, useSearchParams, useLocation, Outlet } from "react-router-dom";
 
 const Boxes = [

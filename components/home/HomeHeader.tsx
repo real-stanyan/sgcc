@@ -46,10 +46,17 @@ const KuaiXun = [
 const HomeHeader = () => {
   // const [visitsCount, setVisitsCount] = useState();
   const [link, setLink] = useState("首页");
+  const [cnt, setCnt] = useState(0);
+  const handleClick = () => {
+    const next = cnt + 1;
+    setCnt(next);
+    if (next === 5) window.location.href = "/dashboard";
+  };
 
   return (
     <div className="relative overflow-visible h-[100vh] flex flex-col">
       <div
+        onClick={handleClick}
         className={`
             bg-[#12a1a0] w-[180px] lg:w-[250px] h-[80px] flex justify-center items-center
             rounded-br-[40px] absolute top-0 left-0 z-50 pr-4
