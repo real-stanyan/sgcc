@@ -1,88 +1,249 @@
-import { Link } from "react-router-dom";
-import { Newspaper, Database, ShieldQuestionMark } from "lucide-react";
+import { useContext } from "react";
+import { SectionContext } from "../src/context/SectionContext";
 
-type Item = {
-  name: string;
-  icon: React.ElementType; // 👈 关键点
-  url: string;
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "../src/components/ui/accordion";
+// 比武练兵
+import BiwulianbingManagement from "./Biwulianbing/BiwulianbingManagement";
+import BiwulianbingAddData from "./Biwulianbing/BiwulianbingAddData";
+import BiwulianbingEditData from "./Biwulianbing/BiwulianbingEditData";
+// 柔性团队
+import RouxingtuanduiManagement from "./Rouxingtuandui/RouxingtuanduiManagement";
+import RouxingtuanduiAddData from "./Rouxingtuandui/RouxingtuanduiAddData";
+import RouxingtuanduiEditData from "./Rouxingtuandui/RouxingtuanduiEditData";
+
+import { AnimatePresence, motion } from "framer-motion";
+
+const variants = {
+  hidden: { opacity: 0, x: 20 },
+  enter: { opacity: 1, x: 0, transition: { duration: 0.5 } },
+  exit: { opacity: 0, x: -20, transition: { duration: 0.3 } },
 };
 
-const items: Item[] = [
-  {
-    name: "发布要闻",
-    icon: Newspaper,
-    url: "/addnewyaowen",
-  },
-  {
-    name: "“赛马制”练兵比武 | 数据管理",
-    icon: Database,
-    url: "/biwulianbingedit",
-  },
-  {
-    name: "开发中...",
-    icon: ShieldQuestionMark,
-    url: "#",
-  },
-  {
-    name: "开发中...",
-    icon: ShieldQuestionMark,
-    url: "#",
-  },
-  {
-    name: "开发中...",
-    icon: ShieldQuestionMark,
-    url: "#",
-  },
-  {
-    name: "开发中...",
-    icon: ShieldQuestionMark,
-    url: "#",
-  },
-];
+const Dashboard: React.FC = () => {
+  const [section, setSection] = useContext(SectionContext);
 
-const Dashboard = () => {
   return (
-    <div
-      className={`
-        w-[100vw] h-[100vh] bg-[#12a1a0] overflow-hidden flex justify-center items-center
-    `}
-    >
-      <div
-        className={`
-        w-[80%] h-auto flex flex-col justify-center items-center gap-8
-        `}
-      >
+    <div className="flex w-full h-[100vh] overflow-x-hidden">
+      {/* Sidebar */}
+      <div className="w-[20%] bg-[#12a1a0] h-full flex flex-col items-center border-white">
         <img
           src="/images/logo.webp"
           alt="logo"
-          className={`
-            w-[150px] h-auto
-            `}
+          className="w-[50%] h-auto py-8"
         />
-        <h1 className="text-white text-4xl font-bold">管理员操控面板</h1>
-        <div
-          className={`
-            grid grid-cols-2 gap-4 w-full
-            `}
+        <Accordion
+          type="single"
+          collapsible
+          className="w-full flex flex-col gap-4"
         >
-          {items.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <Link
-                key={index}
-                to={item.url}
+          {/* “赛马制”练兵比武 */}
+          <AccordionItem value="biwulianbing">
+            <AccordionTrigger className="text-white px-4 text-center">
+              <h1 className="font-bold text-xl">“赛马制”练兵比武</h1>
+            </AccordionTrigger>
+            {/* “赛马制”练兵比武 | 数据管理 */}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
                 className={`
-            flex justify-center items-center gap-4 border-2 border-white text-white
-            px-4 py-2 rounded-md hover:bg-white hover:text-[#12a1a0] duration-200
-            ease-in-out transition-colors cursor-pointer text-3xl h-[90px]
-            `}
+                  ${
+                    section === "biwulianbing_DataManagement"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center  text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("biwulianbing_DataManagement")}
               >
-                <Icon size={50} />
-                <h1 className="whitespace-nowrap font-bold">{item.name}</h1>
-              </Link>
-            );
-          })}
-        </div>
+                数据管理
+              </div>
+            </AccordionContent>
+            {/* “赛马制”练兵比武 | 添加数据 */}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
+                className={`
+                  ${
+                    section === "biwulianbing_AddData"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center  text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("biwulianbing_AddData")}
+              >
+                添加数据
+              </div>
+            </AccordionContent>
+            {/* “赛马制”练兵比武 | 编辑数据 */}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
+                className={`
+                  ${
+                    section === "biwulianbing_EditData"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center  text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("biwulianbing_EditData")}
+              >
+                编辑数据
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+          {/* 柔性团队 */}
+          <AccordionItem value="rouxingtuandui">
+            <AccordionTrigger className="text-white px-4 text-center">
+              <h1 className="font-bold text-xl">柔性团队</h1>
+            </AccordionTrigger>
+            {/* 柔性团队 | 数据管理*/}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
+                className={`
+                  ${
+                    section === "rouxingtuandui_DataManagement"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center  text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("rouxingtuandui_DataManagement")}
+              >
+                数据管理
+              </div>
+            </AccordionContent>
+            {/* 柔性团队 | 添加数据 */}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
+                className={`
+                  ${
+                    section === "rouxingtuandui_AddData"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center  text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("rouxingtuandui_AddData")}
+              >
+                添加数据
+              </div>
+            </AccordionContent>
+            {/* 柔性团队 | 编辑数据 */}
+            <AccordionContent className="flex flex-col gap-4 items-center">
+              <div
+                className={`
+                  ${
+                    section === "rouxingtuandui_EditData"
+                      ? "bg-white text-[#12a1a0]"
+                      : "text-white border-white/70 hover:border-white hover:bg-white hover:text-[#12a1a0]"
+                  }
+                  text-center text-xl cursor-pointer rounded-lg font-bold w-[70%] py-1 
+                  border-2 
+                  `}
+                onClick={() => setSection("rouxingtuandui_EditData")}
+              >
+                编辑数据
+              </div>
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
+      </div>
+
+      {/* Main content */}
+      <div className="w-[80%] overflow-auto relative overflow-x-hidden">
+        <AnimatePresence mode="wait">
+          {/* 比武练兵 */}
+          {section === "biwulianbing_DataManagement" && (
+            <motion.div
+              key="biwulianbing_DataManagement"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <BiwulianbingManagement />
+            </motion.div>
+          )}
+          {section === "biwulianbing_AddData" && (
+            <motion.div
+              key="biwulianbing_AddData"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <BiwulianbingAddData />
+            </motion.div>
+          )}
+          {section === "biwulianbing_EditData" && (
+            <motion.div
+              key="biwulianbing_EditData"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <BiwulianbingEditData />
+            </motion.div>
+          )}
+          {/* 柔性团队 */}
+          {section === "rouxingtuandui_DataManagement" && (
+            <motion.div
+              key="rouxingtuandui_DataManagement"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <RouxingtuanduiManagement />
+            </motion.div>
+          )}
+          {section === "rouxingtuandui_AddData" && (
+            <motion.div
+              key="rouxingtuandui_AddData"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <RouxingtuanduiAddData />
+            </motion.div>
+          )}
+          {section === "rouxingtuandui_EditData" && (
+            <motion.div
+              key="rouxingtuandui_EditData"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <RouxingtuanduiEditData />
+            </motion.div>
+          )}
+
+          {section === null && (
+            <motion.div
+              key="placeholder"
+              initial="hidden"
+              animate="enter"
+              exit="exit"
+              variants={variants}
+            >
+              <div className="text-gray-500 text-center mt-20">
+                请选择左侧菜单以查看内容
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
