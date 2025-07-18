@@ -54,7 +54,7 @@ const HomeHeader = () => {
   };
 
   return (
-    <div className="relative overflow-visible h-[100vh] flex flex-col">
+    <div className="relative overflow-visible min-h-[100vh] flex flex-col">
       <div
         onClick={handleClick}
         className={`

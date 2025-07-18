@@ -71,38 +71,6 @@ function App() {
                 </AuthRoute>
               }
             />
-            <Route
-              path="/addnewyaowen"
-              element={
-                <AuthRoute>
-                  <AddNewYaowen />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path="/addnewkuaixun"
-              element={
-                <AuthRoute>
-                  <AddNewKuaiXun />
-                </AuthRoute>
-              }
-            />
-            <Route
-              path="/biwulianbingedit"
-              element={
-                <AuthRoute>
-                  <BiwulianbingEdit />
-                </AuthRoute>
-              }
-            />
-            {/* <Route
-            path="/rouxingtuanduiedit"
-            element={
-              <AuthRoute>
-                <RouxingtuanduiEdit />
-              </AuthRoute>
-            }
-          /> */}
           </Routes>
         </RouxingtuanduiEditIDContext.Provider>
       </BiwulianbingEditIDContext.Provider>
