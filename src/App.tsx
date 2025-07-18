@@ -4,8 +4,6 @@ import Team from "../pages/Team";
 import Biwulianbing from "../pages/Biwulianbing";
 import Group from "../pages/Group";
 import News from "../pages/News";
-import AddNewYaowen from "../pages/AddNewYaowen";
-import AddNewKuaiXun from "../pages/AddNewKuaiXun";
 import KuaiXunOne from "../components/KuaiXun/One";
 import KuaiXunTwo from "../components/KuaiXun/Two";
 import YaoWenOne from "../components/YaoWen/One";
@@ -15,8 +13,6 @@ import Yaowen from "../pages/Yaowen";
 import Kuaixun from "../pages/Kuaixun";
 import AuthRoute from "../components/common/AuthRoute";
 import Dashboard from "../pages/Dashboard";
-import BiwulianbingEdit from "../pages/Biwulianbing/BiwulianbingManagement";
-// import RouxingtuanduiEdit from "../pages/RouxingtuanduiEdit";
 
 import { Routes, Route } from "react-router-dom";
 import { Toaster } from "../src/components/ui/sonner";
