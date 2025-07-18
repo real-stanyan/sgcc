@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from "react";
 import { BiwulianbingEditIDContext } from "../../src/context/BiwulianbingEditIDContext";
 import { SectionContext } from "../../src/context/SectionContext";
 import { Input } from "../../src/components/ui/input";
-import { Pencil, Trash } from "lucide-react";
+import { motion } from "framer-motion";
+import { Pencil, Trash, ChevronUp, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -18,6 +19,7 @@ import {
 
 type Biwulianbing = {
   id: string;
+  i: number;
   project: string;
   content: string;
   header_office: string;
@@ -27,7 +29,6 @@ type Biwulianbing = {
   responsibler: string;
   contact: string;
   progress: string;
-  CreatedAt: string;
 };
 
 const BiwulianbingManagement = () => {
@@ -90,6 +91,58 @@ const BiwulianbingManagement = () => {
     }
   };
 
+  // 数据升序：将 i 与 i-1 交换
+  const handleIncreaseOrderByI = async (i: number) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/increasebiwulianbingorderbyi/${i}`,
+        { method: "POST" }
+      );
+      if (!res.ok) throw new Error(`排序失败：${res.status}`);
+
+      setData((prev) =>
+        prev
+          .map((item) => {
+            if (item.i === i) return { ...item, i: i - 1 };
+            if (item.i === i - 1) return { ...item, i: i };
+            return item;
+          })
+          .sort((a, b) => a.i - b.i)
+      );
+
+      toast.success("排序已更新");
+    } catch (err) {
+      console.error(err);
+      toast.error("排序失败");
+    }
+  };
+
+  // 数据降序：将 i 与 i+1 交换
+  const handleDecreaseOrderByI = async (i: number) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/decreasebiwulianbingorderbyi/${i}`,
+        { method: "POST" }
+      );
+      if (!res.ok) throw new Error(`排序失败：${res.status}`);
+
+      setData((prev) =>
+        prev
+          .map((item) => {
+            if (item.i === i) return { ...item, i: i + 1 };
+            if (item.i === i + 1) return { ...item, i: i };
+            return item;
+          })
+          .sort((a, b) => a.i - b.i)
+      );
+
+      toast.success("排序已更新");
+    } catch (err) {
+      console.error(err);
+      toast.error("排序失败");
+    }
+  };
+
   return (
     <div
       className={`
@@ -113,7 +166,7 @@ const BiwulianbingManagement = () => {
           <Input
             className={`border border-gray-400 h-[40px]`}
             placeholder="输入关键词..."
-            onChange={(e) => setKeyword(e.target.value)}
+            onChange={(e) => setKeyword(e.target.value.trim())}
           />
           <div
             className={`
@@ -144,126 +197,140 @@ const BiwulianbingManagement = () => {
         `}
       >
         {filteredData.length > 0 ? (
-          filteredData
-            .sort(
-              (a, b) =>
-                new Date(a.CreatedAt).getTime() -
-                new Date(b.CreatedAt).getTime()
-            )
-            .map((item) => (
+          filteredData.map((item) => (
+            <motion.div
+              key={item.id}
+              layout
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              className="flex text-md bg-gray-300 rounded-md"
+            >
+              {/* 表格序号 */}
               <div
-                key={item.id}
                 className={`
-            flex text-md bg-gray-300 rounded-md
-            `}
+                w-[10%] border-r-1 flex flex-col justify-center items-center gap-2
+                `}
               >
-                <div className="flex flex-col gap-1 w-[85%] p-4">
-                  {/* ID */}
-                  <h1>
-                    <strong>ID:</strong> {item.id}
-                  </h1>
-                  {/* 练兵比武项目 */}
-                  <h1>
-                    <strong>练兵比武项目:</strong> {item.project}
-                  </h1>
-                  {/* 省公司主管部门 */}
-                  <h1>
-                    <strong>省公司主管部门:</strong> {item.header_office}
-                  </h1>
-                  {/* 分管领导 */}
-                  <h1>
-                    <strong>分管领导:</strong> {item.manager}
-                  </h1>
-                  {/* 项目负责人 */}
-                  <h1>
-                    <strong>项目负责人:</strong> {item.responsibler}
-                  </h1>
-                  {/* 联系人 */}
-                  <h1>
-                    <strong>联系人:</strong> {item.contact}
-                  </h1>
-                  {/* 练兵时间段 */}
-                  <h1>
-                    <strong>练兵时间段:</strong> {item.duration}
-                  </h1>
-                  {/* 比武时间 */}
-                  <h1>
-                    <strong>比武时间:</strong> {item.date}
-                  </h1>
-                  {/* 比武进度 */}
-                  <h1>
-                    <strong>比武进度:</strong> {item.progress}
-                  </h1>
-                  {/* 内容 */}
-                  <h1>
-                    <strong>内容:</strong> {item.content}
-                  </h1>
-                </div>
-                <div className="flex flex-col w-[15%]">
-                  {/* 编辑数据 */}
-                  <div
-                    className={`
+                <ChevronUp
+                  size={40}
+                  className="hover:scale-130 duration-200 ease-in-out cursor-pointer transition-all"
+                  onClick={() => handleIncreaseOrderByI(item.i)}
+                />
+                <h1 className="font-bold text-2xl">{item.i}</h1>
+                <ChevronDown
+                  size={40}
+                  className="hover:scale-130 duration-200 ease-in-out cursor-pointer transition-all"
+                  onClick={() => handleDecreaseOrderByI(item.i)}
+                />
+              </div>
+              {/* 表格内容 */}
+              <div className="flex flex-col gap-1 w-[75%] p-4">
+                {/* ID */}
+                <h1>
+                  <strong>ID:</strong> {item.id}
+                </h1>
+                {/* 练兵比武项目 */}
+                <h1>
+                  <strong>练兵比武项目:</strong> {item.project}
+                </h1>
+                {/* 省公司主管部门 */}
+                <h1>
+                  <strong>省公司主管部门:</strong> {item.header_office}
+                </h1>
+                {/* 分管领导 */}
+                <h1>
+                  <strong>分管领导:</strong> {item.manager}
+                </h1>
+                {/* 项目负责人 */}
+                <h1>
+                  <strong>项目负责人:</strong> {item.responsibler}
+                </h1>
+                {/* 联系人 */}
+                <h1>
+                  <strong>联系人:</strong> {item.contact}
+                </h1>
+                {/* 练兵时间段 */}
+                <h1>
+                  <strong>练兵时间段:</strong> {item.duration}
+                </h1>
+                {/* 比武时间 */}
+                <h1>
+                  <strong>比武时间:</strong> {item.date}
+                </h1>
+                {/* 比武进度 */}
+                <h1>
+                  <strong>比武进度:</strong> {item.progress}
+                </h1>
+                {/* 内容 */}
+                <h1>
+                  <strong>内容:</strong> {item.content}
+                </h1>
+              </div>
+              {/* 表格功能 */}
+              <div className="flex flex-col w-[15%]">
+                {/* 编辑数据 */}
+                <div
+                  className={`
                     flex-1 flex flex-col justify-center items-center gap-2 cursor-pointer
                     group border
                     `}
-                    onClick={() => {
-                      setDataID(item.id);
-                      setSection("biwulianbing_EditData");
-                    }}
-                  >
-                    <Pencil size={25} />
-                    <h1
-                      className={`
+                  onClick={() => {
+                    setDataID(item.id);
+                    setSection("biwulianbing_EditData");
+                  }}
+                >
+                  <Pencil size={25} />
+                  <h1
+                    className={`
                     font-normal text-lg group-hover:font-bold duration-200 transition-all
                     ease-in-out
                     `}
-                    >
-                      编辑数据
-                    </h1>
-                  </div>
-                  {/* 删除数据 */}
-                  <AlertDialog>
-                    <AlertDialogTrigger className="flex-1">
-                      <div
-                        className={`
+                  >
+                    编辑数据
+                  </h1>
+                </div>
+                {/* 删除数据 */}
+                <AlertDialog>
+                  <AlertDialogTrigger className="flex-1">
+                    <div
+                      className={`
                     w-full h-full flex flex-col justify-center items-center gap-2 
                     cursor-pointer group border
                     `}
-                      >
-                        <Trash size={25} />
-                        <h1
-                          className={`
+                    >
+                      <Trash size={25} />
+                      <h1
+                        className={`
                         font-normal text-lg group-hover:font-bold duration-200 
                         transition-all ease-in-out
                         `}
-                        >
-                          删除数据
-                        </h1>
-                      </div>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          确认要删除此条数据吗？
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          该行为不可逆，请谨慎操作。
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>取消</AlertDialogCancel>
-                        <AlertDialogAction
-                          className="bg-red-600"
-                          onClick={() => handleDeleteDataByID(item.id)}
-                        >
-                          删除
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </div>
+                      >
+                        删除数据
+                      </h1>
+                    </div>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        确认要删除此条数据吗？
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        该行为不可逆，请谨慎操作。
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>取消</AlertDialogCancel>
+                      <AlertDialogAction
+                        className="bg-red-600"
+                        onClick={() => handleDeleteDataByID(item.id)}
+                      >
+                        删除
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               </div>
-            ))
+            </motion.div>
+          ))
         ) : (
           <div className="text-black min-h-[300px] flex justify-center items-center">
             <h1 className="font-bold text-2xl">无数据</h1>

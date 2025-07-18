@@ -1,8 +1,9 @@
 import { useState, useEffect, useContext } from "react";
 import { RouxingtuanduiEditIDContext } from "../../src/context/RouxingtuanduiEditIDContext";
 import { SectionContext } from "../../src/context/SectionContext";
+import { motion } from "framer-motion";
 import { Input } from "../../src/components/ui/input";
-import { Pencil, Trash } from "lucide-react";
+import { Pencil, Trash, ChevronUp, ChevronDown } from "lucide-react";
 import { toast } from "sonner";
 import {
   AlertDialog,
@@ -18,6 +19,7 @@ import {
 
 type Rouxingtuandui = {
   id: string;
+  i: number;
   manager: string;
   team_leader: string;
   area: string;
@@ -27,7 +29,6 @@ type Rouxingtuandui = {
   team_heros: string[];
   contact: { name: string; number: string };
   team_members: string[];
-  CreatedAt: string;
 };
 
 const RouxingtuanduiManagement = () => {
@@ -72,6 +73,58 @@ const RouxingtuanduiManagement = () => {
     }
   };
 
+  // 数据升序：将 i 与 i-1 交换
+  const handleIncreaseOrderByI = async (i: number) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/increaserouxingtuanduiorderbyi/${i}`,
+        { method: "POST" }
+      );
+      if (!res.ok) throw new Error(`排序失败：${res.status}`);
+
+      setData((prev) =>
+        prev
+          .map((item) => {
+            if (item.i === i) return { ...item, i: i - 1 };
+            if (item.i === i - 1) return { ...item, i: i };
+            return item;
+          })
+          .sort((a, b) => a.i - b.i)
+      );
+
+      toast.success("排序已更新");
+    } catch (err) {
+      console.error(err);
+      toast.error("排序失败");
+    }
+  };
+
+  // 数据降序：将 i 与 i+1 交换
+  const handleDecreaseOrderByI = async (i: number) => {
+    try {
+      const res = await fetch(
+        `http://localhost:3000/api/decreaserouxingtuanduiorderbyi/${i}`,
+        { method: "POST" }
+      );
+      if (!res.ok) throw new Error(`排序失败：${res.status}`);
+
+      setData((prev) =>
+        prev
+          .map((item) => {
+            if (item.i === i) return { ...item, i: i + 1 };
+            if (item.i === i + 1) return { ...item, i: i };
+            return item;
+          })
+          .sort((a, b) => a.i - b.i)
+      );
+
+      toast.success("排序已更新");
+    } catch (err) {
+      console.error(err);
+      toast.error("排序失败");
+    }
+  };
+
   return (
     <div className="w-full min-h-[100vh] overflow-x-hidden bg-gray-50 relative">
       <div className="flex justify-between items-center h-[100px] px-8">
@@ -97,95 +150,109 @@ const RouxingtuanduiManagement = () => {
       </div>
       <div className="bg-gray-200 w-[95%] mx-auto rounded p-4 flex flex-col gap-2">
         {filtered.length > 0 ? (
-          filtered
-            .sort(
-              (a, b) =>
-                new Date(a.CreatedAt).getTime() -
-                new Date(b.CreatedAt).getTime()
-            )
-            .map((item) => (
+          filtered.map((item) => (
+            <motion.div
+              key={item.id}
+              layout
+              transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              className="flex text-md bg-gray-300 rounded-md"
+            >
+              {/* 表格序号 */}
               <div
-                key={item.id}
-                className="flex text-md bg-gray-300 rounded-md"
+                className={`
+                w-[10%] border-r-1 flex flex-col justify-center items-center gap-2
+                `}
               >
-                <div className="flex flex-col gap-1 w-[85%] p-4">
-                  <h1>
-                    <strong>ID:</strong> {item.id}
-                  </h1>
-                  <h1>
-                    <strong>主管:</strong> {item.manager}
-                  </h1>
-                  <h1>
-                    <strong>组长:</strong> {item.team_leader}
-                  </h1>
-                  <h1>
-                    <strong>区域:</strong> {item.area}
-                  </h1>
-                  <h1>
-                    <strong>副组长:</strong> {item.team_sub_leader.join("、")}
-                  </h1>
-                  <h1>
-                    <strong>研究课题:</strong> {item.research_titles.join("、")}
-                  </h1>
-                  <h1>
-                    <strong>项目:</strong> {item.projects.join("、")}
-                  </h1>
-                  <h1>
-                    <strong>团队骨干:</strong> {item.team_heros.join("、")}
-                  </h1>
-                  <h1>
-                    <strong>联系人:</strong> {item.contact.name} (
-                    {item.contact.number})
-                  </h1>
-                  <h1>
-                    <strong>成员:</strong> {item.team_members.join("、")}
-                  </h1>
-                </div>
-                <div className="flex flex-col w-[15%]">
-                  <div
-                    className="flex-1 flex flex-col justify-center items-center gap-2 cursor-pointer group border"
-                    onClick={() => {
-                      setDataID(item.id);
-                      setSection("rouxingtuandui_EditData");
-                    }}
-                  >
-                    <Pencil size={25} />
-                    <h1 className="font-normal text-lg group-hover:font-bold transition-all">
-                      编辑数据
-                    </h1>
-                  </div>
-                  <AlertDialog>
-                    <AlertDialogTrigger className="flex-1">
-                      <div className="w-full h-full flex flex-col justify-center items-center gap-2 cursor-pointer group border">
-                        <Trash size={25} />
-                        <h1 className="font-normal text-lg group-hover:font-bold transition-all">
-                          删除数据
-                        </h1>
-                      </div>
-                    </AlertDialogTrigger>
-                    <AlertDialogContent>
-                      <AlertDialogHeader>
-                        <AlertDialogTitle>
-                          确认要删除此条数据吗？
-                        </AlertDialogTitle>
-                        <AlertDialogDescription>
-                          该操作不可逆。
-                        </AlertDialogDescription>
-                      </AlertDialogHeader>
-                      <AlertDialogFooter>
-                        <AlertDialogCancel>取消</AlertDialogCancel>
-                        <AlertDialogAction
-                          className="bg-red-600"
-                          onClick={() => handleDelete(item.id)}
-                        >
-                          删除
-                        </AlertDialogAction>
-                      </AlertDialogFooter>
-                    </AlertDialogContent>
-                  </AlertDialog>
-                </div>
+                <ChevronUp
+                  size={40}
+                  className="hover:scale-130 duration-200 ease-in-out cursor-pointer transition-all"
+                  onClick={() => handleIncreaseOrderByI(item.i)}
+                />
+                <h1 className="font-bold text-2xl">{item.i}</h1>
+                <ChevronDown
+                  size={40}
+                  className="hover:scale-130 duration-200 ease-in-out cursor-pointer transition-all"
+                  onClick={() => handleDecreaseOrderByI(item.i)}
+                />
               </div>
-            ))
+              <div className="flex flex-col gap-1 w-[75%] p-4">
+                <h1>
+                  <strong>ID:</strong> {item.id}
+                </h1>
+                <h1>
+                  <strong>主管:</strong> {item.manager}
+                </h1>
+                <h1>
+                  <strong>组长:</strong> {item.team_leader}
+                </h1>
+                <h1>
+                  <strong>区域:</strong> {item.area}
+                </h1>
+                <h1>
+                  <strong>副组长:</strong> {item.team_sub_leader.join("、")}
+                </h1>
+                <h1>
+                  <strong>研究课题:</strong> {item.research_titles.join("、")}
+                </h1>
+                <h1>
+                  <strong>项目:</strong> {item.projects.join("、")}
+                </h1>
+                <h1>
+                  <strong>团队骨干:</strong> {item.team_heros.join("、")}
+                </h1>
+                <h1>
+                  <strong>联系人:</strong> {item.contact.name} (
+                  {item.contact.number})
+                </h1>
+                <h1>
+                  <strong>成员:</strong> {item.team_members.join("、")}
+                </h1>
+              </div>
+              <div className="flex flex-col w-[15%]">
+                <div
+                  className="flex-1 flex flex-col justify-center items-center gap-2 cursor-pointer group border"
+                  onClick={() => {
+                    setDataID(item.id);
+                    setSection("rouxingtuandui_EditData");
+                  }}
+                >
+                  <Pencil size={25} />
+                  <h1 className="font-normal text-lg group-hover:font-bold transition-all">
+                    编辑数据
+                  </h1>
+                </div>
+                <AlertDialog>
+                  <AlertDialogTrigger className="flex-1">
+                    <div className="w-full h-full flex flex-col justify-center items-center gap-2 cursor-pointer group border">
+                      <Trash size={25} />
+                      <h1 className="font-normal text-lg group-hover:font-bold transition-all">
+                        删除数据
+                      </h1>
+                    </div>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>
+                        确认要删除此条数据吗？
+                      </AlertDialogTitle>
+                      <AlertDialogDescription>
+                        该操作不可逆。
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogCancel>取消</AlertDialogCancel>
+                      <AlertDialogAction
+                        className="bg-red-600"
+                        onClick={() => handleDelete(item.id)}
+                      >
+                        删除
+                      </AlertDialogAction>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
+              </div>
+            </motion.div>
+          ))
         ) : (
           <div className="text-black min-h-[300px] flex justify-center items-center">
             <h1 className="font-bold text-2xl">无数据</h1>

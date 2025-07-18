@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 interface Item {
   id: number;
+  i: number;
   manager: string;
   team_leader: string;
   area: string;
@@ -11,7 +12,6 @@ interface Item {
   team_heros: string[];
   contact: { name: string; number: string };
   team_members: string[];
-  CreatedAt: string;
 }
 
 interface Props {
@@ -56,42 +56,36 @@ const RouXingTuanDui: React.FC<Props> = ({ handleSetWindow }) => {
           </tr>
         </thead>
         <tbody>
-          {data
-            .sort(
-              (a, b) =>
-                new Date(a.CreatedAt).getTime() -
-                new Date(b.CreatedAt).getTime()
-            )
-            .map((item, idx) => (
-              <tr key={item.id} className={idx % 2 ? "bg-gray-200" : ""}>
-                <td className="text-center h-[80px]">{idx + 1}</td>
-                <td className="text-center h-[80px]">{item.manager}</td>
-                <td className="text-center h-[80px]">{item.team_leader}</td>
-                <td className="text-center h-[80px]">{item.area}</td>
-                <td className="text-center h-[80px]">
-                  {item.team_sub_leader.join("、")}
-                </td>
-                <td className="text-left h-[80px] truncate p-2">
-                  {item.research_titles.join("、")}
-                </td>
-                <td className="text-left h-[80px] truncate p-2">
-                  {item.projects.join("、")}
-                </td>
-                <td className="text-center h-[80px] whitespace-pre-wrap p-2">
-                  {item.contact.name}
-                  <br />
-                  {item.contact.number}
-                </td>
-                <td className="text-center h-[80px]">
-                  <button
-                    className="underline text-gray-600"
-                    onClick={() => handleSetWindow(item)}
-                  >
-                    查看
-                  </button>
-                </td>
-              </tr>
-            ))}
+          {data.map((item, idx) => (
+            <tr key={item.id} className={idx % 2 ? "bg-gray-200" : ""}>
+              <td className="text-center h-[80px]">{item.i}</td>
+              <td className="text-center h-[80px]">{item.manager}</td>
+              <td className="text-center h-[80px]">{item.team_leader}</td>
+              <td className="text-center h-[80px]">{item.area}</td>
+              <td className="text-center h-[80px]">
+                {item.team_sub_leader.join("、")}
+              </td>
+              <td className="text-left h-[80px] truncate p-2">
+                {item.research_titles.join("、")}
+              </td>
+              <td className="text-left h-[80px] truncate p-2">
+                {item.projects.join("、")}
+              </td>
+              <td className="text-center h-[80px] whitespace-pre-wrap p-2">
+                {item.contact.name}
+                <br />
+                {item.contact.number}
+              </td>
+              <td className="text-center h-[80px]">
+                <button
+                  className="underline text-gray-600"
+                  onClick={() => handleSetWindow(item)}
+                >
+                  查看
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>

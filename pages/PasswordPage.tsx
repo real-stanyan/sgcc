@@ -9,7 +9,7 @@ export default function PasswordPage() {
     if (pwd === "123456") {
       sessionStorage.setItem("auth_ok", "123456");
       toast.success("登陆成果!");
-      window.location.href = "/addnewyaowen";
+      window.location.href = "/dashboard";
     } else {
       toast.error("密码错误!");
     }

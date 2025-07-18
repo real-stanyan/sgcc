@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 interface BiwulianbingItem {
   id: string;
+  i: number;
   project: string;
   content: string;
   header_office: string;
@@ -58,7 +59,7 @@ const Biwulianbing: React.FC<Props> = ({ handleSetWindow }) => {
         <tbody>
           {data.map((item, idx) => (
             <tr key={item.id} className={idx % 2 ? "bg-gray-200" : ""}>
-              <td className="text-center h-[80px]">{idx + 1}</td>
+              <td className="text-center h-[80px]">{item.i}</td>
               <td className="text-center truncate h-[80px]">{item.project}</td>
               <td className="text-center h-[80px]">{item.header_office}</td>
               <td className="text-center h-[80px]">{item.manager}</td>
